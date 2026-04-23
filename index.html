@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nate — The Last Mile Operating System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0d;
+    --ink-soft: #5a5a54;
+    --ink-faint: #a8a8a0;
+    --paper: #f7f6f2;
+    --paper-warm: #eeece5;
+    --accent: #c8502a;
+    --accent-soft: #f0e8e3;
+    --border: rgba(15,15,13,0.10);
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    padding: 10rem 2.5rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+    max-width: 820px;
+  }
+  .hero h1 em { font-style: italic; color: var(--ink-soft); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%; height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* PULL QUOTE */
+  .pullquote-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 2.5rem;
+    animation: fadeUp 0.9s ease 0.2s both;
+  }
+  .pullquote-inner {
+    max-width: 820px; margin: 0 auto;
+    display: grid; grid-template-columns: 3px 1fr; gap: 2rem; align-items: start;
+  }
+  .pullquote-bar { background: var(--accent); height: 100%; min-height: 80px; border-radius: 2px; }
+  .pullquote-text {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .pullquote-text em { font-style: italic; color: rgba(247,246,242,0.65); }
+
+  /* INSIGHT */
+  .section {
+    max-width: 900px; margin: 0 auto;
+    padding: 5rem 2.5rem;
+    animation: fadeUp 0.9s ease 0.3s both;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.75rem;
+  }
+  .section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    max-width: 680px;
+  }
+  .section p {
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin-bottom: 1.25rem;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* INSIGHT CALLOUTS */
+  .callout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 640px) { .callout-grid { grid-template-columns: 1fr; } }
+  .callout {
+    background: var(--paper);
+    padding: 1.75rem 2rem;
+  }
+  .callout-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .callout p { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
+
+  /* MARKET */
+  .market-section {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 2.5rem;
+    animation: fadeUp 0.9s ease 0.4s both;
+  }
+  .market-inner { max-width: 900px; margin: 0 auto; }
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 720px) { .market-grid { grid-template-columns: repeat(2, 1fr); } }
+  .market-stat {}
+  .market-stat .num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .market-stat .desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
+
+  /* MODEL */
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  .model-row {
+    background: var(--paper);
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .model-row { grid-template-columns: 1fr; gap: 0.75rem; } }
+  .model-title {
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--ink);
+    padding-top: 0.15rem;
+  }
+  .model-title span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .model-body { font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* PORTFOLIO */
+  .portfolio-section {
+    padding: 5rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeUp 0.9s ease 0.5s both;
+  }
+  .venture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 720px) { .venture-grid { grid-template-columns: 1fr; } }
+  .venture {
+    background: var(--paper);
+    padding: 1.75rem 1.75rem 1.5rem;
+    display: flex; flex-direction: column;
+  }
+  .venture-wave {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+  }
+  .venture h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+  .venture p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; flex: 1; }
+  .venture-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(200,80,42,0.3);
+    padding: 3px 8px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+
+  /* ARC */
+  .arc-section {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 2.5rem;
+    animation: fadeUp 0.9s ease 0.6s both;
+  }
+  .arc-inner { max-width: 900px; margin: 0 auto; }
+  .arc-steps {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 720px) { .arc-steps { grid-template-columns: 1fr; } }
+  .arc-step {}
+  .arc-step-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.75rem;
+  }
+  .arc-step h3 {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .arc-step p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.65; }
+
+  /* MOAT */
+  .moat-section {
+    max-width: 900px; margin: 0 auto;
+    padding: 5rem 2.5rem;
+    animation: fadeUp 0.9s ease 0.7s both;
+  }
+  .moat-body {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+  footer p { font-size: 0.82rem; color: var(--ink-faint); }
+  .footer-contact {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .footer-contact:hover { color: var(--accent); }
+
+  /* ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Nate</a>
+  <ul class="nav-links">
+    <li><a href="#model">Model</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#arc">Investment arc</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Venture Studio</p>
+  <h1>The Last Mile <em>Operating System</em></h1>
+  <p class="hero-sub">We build the infrastructure layer powering the world's 2 billion frontline workers — across health, agriculture, FMCG, fintech, and clean energy.</p>
+  <a href="#model" class="hero-cta">Explore the thesis</a>
+</section>
+
+<div class="divider"></div>
+
+<!-- PULL QUOTE -->
+<section class="pullquote-section">
+  <div class="pullquote-inner">
+    <div class="pullquote-bar"></div>
+    <p class="pullquote-text">"Why is there no operating system for <em>the people who actually deliver products and services at the last mile?</em>"</p>
+  </div>
+</section>
+
+<!-- FOUNDING INSIGHT -->
+<section class="section">
+  <p class="section-label">The founding insight</p>
+  <h2>A legibility problem, not a motivation problem</h2>
+  <p>Every company that reaches rural or underserved markets depends on a frontline agent — a community health worker, an agrodealer, a sales rep, a delivery rider. The infrastructure supporting them hasn't changed in 20 years: paper, WhatsApp, Excel, and a supervisor who can't see what's actually happening.</p>
+  <p>The problem isn't the agents. It's that every function touching them — onboarding, supervision, incentives, coaching, advisory — runs in its own silo, with its own data, with its own blind spots.</p>
+
+  <div class="callout-grid">
+    <div class="callout">
+      <div class="callout-num">01</div>
+      <p>Frontline agents underperform because the systems managing them are structurally fragmented — not because they lack motivation or training.</p>
+    </div>
+    <div class="callout">
+      <div class="callout-num">02</div>
+      <p>When agent performance becomes governable — connecting functions, surfacing data — managers diagnose instead of guess. That's the studio's core thesis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market-section" id="market">
+  <div class="market-inner">
+    <p class="section-label">The market</p>
+    <h2>A problem identical across every sector with a last mile</h2>
+    <div class="market-grid">
+      <div class="market-stat">
+        <div class="num">2B+</div>
+        <div class="desc">Frontline workers globally across health, agri, FMCG, fintech</div>
+      </div>
+      <div class="market-stat">
+        <div class="num">$4.3B</div>
+        <div class="desc">Annual Africa CHW commitment alone — infrastructure unbuilt</div>
+      </div>
+      <div class="market-stat">
+        <div class="num">30–50%</div>
+        <div class="desc">Field activity that's unverifiable in any current system</div>
+      </div>
+      <div class="market-stat">
+        <div class="num">$2–5M</div>
+        <div class="desc">Single anchor contract potential per venture deployment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL -->
+<section class="section" id="model">
+  <p class="section-label">The studio model — why this, not a startup</p>
+  <h2>Systematic exploration, not single inspired bets</h2>
+  <p>Breakthroughs emerge from running parallel experiments across verticals — health, agri, FMCG — sharing the same infrastructure, the same behavioral design playbook, and the same data compounding from every deployment.</p>
+
+  <div class="model-grid">
+    <div class="model-row">
+      <div class="model-title"><span>Advantage</span>Shared infrastructure</div>
+      <div class="model-body">Every venture built on the agent OS feeds performance data back to the platform. A deployment for CHWs in Kenya generates behavioral insights that improve the seed-dealer deployment in India. This compounding is structurally impossible for a standalone startup.</div>
+    </div>
+    <div class="model-row">
+      <div class="model-title"><span>Discipline</span>Proto-company approach</div>
+      <div class="model-body">Each venture starts as a numbered experiment, not a named company. The first six months run the "killer experiment" — the test most likely to prove the thesis wrong. Only surviving configurations earn capital and a name.</div>
+    </div>
+    <div class="model-row">
+      <div class="model-title"><span>Revenue</span>Architecture</div>
+      <div class="model-body">Corporate co-builds and managed service contracts bridge the cash gap. Input companies, health ministries, and multinationals pay for execution quality, not technology. The studio earns fees while building equity in platform companies.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <p class="section-label">The venture portfolio</p>
+  <h2>Six experiments proving the thesis</h2>
+  <div class="venture-grid">
+    <div class="venture">
+      <div class="venture-wave">Studio infrastructure</div>
+      <h3>AgentOS</h3>
+      <p>The platform itself: recruiting, credentialing, tasking, supervision, incentives, analytics — built for low-connectivity, low-literacy field environments.</p>
+      <span class="venture-tag">Core platform</span>
+    </div>
+    <div class="venture">
+      <div class="venture-wave">Wave 1</div>
+      <h3>Community Health Workforce Co.</h3>
+      <p>Managed service running CHW networks for governments. AgentOS as the full operating backbone. Africa's 2M-CHW commitment is a decade-long pipeline.</p>
+      <span class="venture-tag">Health</span>
+    </div>
+    <div class="venture">
+      <div class="venture-wave">Wave 1</div>
+      <h3>AgriAgent</h3>
+      <p>Manages rural sales networks for seed, fertilizer, and crop-protection companies. Connects Bayer and input companies to the last mile with verifiable field activity.</p>
+      <span class="venture-tag">Agriculture</span>
+    </div>
+    <div class="venture">
+      <div class="venture-wave">Wave 2</div>
+      <h3>Last Mile Distribution-as-a-Service</h3>
+      <p>Helps multinationals reach rural consumers via trained agent networks. Priced on activation quality and cost-per-acquisition, not delivery volume.</p>
+      <span class="venture-tag">FMCG</span>
+    </div>
+    <div class="venture">
+      <div class="venture-wave">Wave 2</div>
+      <h3>Clean Cooking Transition</h3>
+      <p>Distribution and sustained-adoption service with behavioral design as the differentiated layer. MRV data enables carbon credits as a revenue stream.</p>
+      <span class="venture-tag">Clean energy</span>
+    </div>
+    <div class="venture">
+      <div class="venture-wave">Wave 3 — IT data support</div>
+      <h3>Aggregated Last-Mile Logistics</h3>
+      <p>Why are birth control, fertilizer, and cooking fuel on separate trucks? Shared logistics infrastructure for any product that needs the same route.</p>
+      <span class="venture-tag">Logistics</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARC -->
+<section class="arc-section" id="arc">
+  <div class="arc-inner">
+    <p class="section-label">The investment arc</p>
+    <h2>Three phases to platform dominance</h2>
+    <div class="arc-steps">
+      <div class="arc-step">
+        <div class="arc-step-num">1</div>
+        <h3>Evidence — now</h3>
+        <p>Deep integration with one anchor (e.g. Apollo Agriculture). Prove the thesis: connecting fragmented agent-management functions produces measurable performance lift. Generate the data and the reference architecture.</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-step-num">2</div>
+        <h3>Platform — 18 months</h3>
+        <p>Ship AgentOS as a product. Launch 2–3 proto-companies in health and agriculture. Run killer experiments on each value proposition. Fund the ones that do.</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-step-num">3</div>
+        <h3>Scale</h3>
+        <p>Surviving configurations enter new markets and sectors. Multinationals anchor Wave 2 ventures with co-build fees. The platform's compounding data advantage becomes a defensible moat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOAT -->
+<section class="moat-section">
+  <p class="section-label">The structural moat</p>
+  <h2>Behavioral data, not software</h2>
+  <p class="moat-body">The studio's durable advantage is data — data on what actually works, what interventions work, and which incentive structures produce genuine performance improvement. Every vertical deployment makes the platform smarter for the next one. This is the same compounding logic that makes Flagship Pioneering defensible: not any single company, but the institutional capability to generate better companies than anyone else can.</p>
+  <div class="tag-row">
+    <span class="tag">Behavioral data</span>
+    <span class="tag">Cross-sector pattern</span>
+    <span class="tag">Shared OS → lower build cost per venture</span>
+    <span class="tag">Corporate anchor contracts bridge cash</span>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <span class="footer-logo">Nate</span>
+  <p>The Last Mile Operating System</p>
+  <a href="mailto:hello@nate.studio" class="footer-contact">hello@nate.studio</a>
+</footer>
+
+</body>
+</html>
