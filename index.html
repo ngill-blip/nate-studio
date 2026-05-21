@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nate — The last mile has no infrastructure. We're building it.</title>
+<title>Nate — A venture studio for the last mile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +17,7 @@
   --rule:    #e8e6e0;
   --accent:  #5c6b3a;
   --accent-l:#eef1e6;
+  --bg-warm: #f8f7f4;
   --sans:    'Instrument Sans', 'Helvetica Neue', sans-serif;
   --serif:   'Instrument Serif', Georgia, serif;
   --p: 5vw;
@@ -39,6 +40,7 @@ body {
   height: 52px;
   display: flex; align-items: center; justify-content: space-between;
   border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0; background: var(--white); z-index: 10;
 }
 .mast-name {
   font-size: 0.7rem; font-weight: 500;
@@ -59,52 +61,27 @@ body {
 
 /* ── HERO ── */
 .hero {
-  padding: 7vw var(--p) 6vw;
-  display: grid;
-  grid-template-columns: 1fr 28ch;
-  gap: 8vw;
-  align-items: end;
+  padding: 8vw var(--p) 7vw;
   border-bottom: 1px solid var(--rule);
+  max-width: 900px;
 }
-@media(max-width:780px){
-  .hero { grid-template-columns:1fr; gap:3rem; padding:4rem 2rem 3rem; }
-  :root { --p: 2rem; }
-}
-
 .hero-kicker {
   font-size: 0.62rem; font-weight: 400;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.5rem;
+  color: var(--accent); margin-bottom: 1.75rem; display: block;
 }
 h1 {
   font-family: var(--serif);
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 400; line-height: 1.04;
   letter-spacing: -0.02em; color: var(--ink);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 h1 em { font-style: italic; }
 .hero-deck {
-  font-size: 0.95rem; font-weight: 300; line-height: 1.8;
-  color: var(--mid); max-width: 46ch;
+  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+  color: var(--mid); max-width: 58ch;
 }
-
-.snaps { display: flex; flex-direction: column; }
-.snap {
-  padding: 1rem 0;
-  border-top: 1px solid var(--rule);
-}
-.snap:last-child { border-bottom: 1px solid var(--rule); }
-.snap-l {
-  font-size: 0.58rem; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--dim); margin-bottom: 0.3rem;
-}
-.snap-v {
-  font-size: 0.8rem; font-weight: 300;
-  color: var(--mid); line-height: 1.6;
-}
-.snap-v strong { font-weight: 500; color: var(--ink); }
 
 /* ── SHARED ── */
 .flag {
@@ -153,228 +130,330 @@ blockquote p {
   margin: 0;
 }
 
-/* ── INSIGHT + DARK RIGHT ── */
-.insight {
+@media(max-width:780px){
+  :root { --p: 2rem; }
+  .hero { padding: 4rem 2rem 3rem; }
+}
+
+/* ── WHAT IS A VENTURE STUDIO ── */
+.studio-explainer {
   display: grid;
   grid-template-columns: 1fr 320px;
   border-bottom: 1px solid var(--rule);
 }
-@media(max-width:860px){ .insight{ grid-template-columns:1fr; } }
+@media(max-width:860px){ .studio-explainer { grid-template-columns:1fr; } }
 
-.insight-main {
+.studio-main {
   padding: 5vw var(--p);
   border-right: 1px solid var(--rule);
 }
+@media(max-width:860px){ .studio-main { border-right: none; } }
 
-.punchy {
-  background: var(--ink);
+.studio-aside {
   padding: 5vw 2.5rem;
-  display: flex; flex-direction: column; justify-content: space-between;
+  background: var(--bg-warm);
+  display: flex; flex-direction: column; gap: 0;
 }
-.p-inner { display: flex; flex-direction: column; gap: 0; }
-.p-stat {
-  padding: 2rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.p-stat:first-child { padding-top: 0; }
-.p-stat:last-child { border-bottom: none; }
-.p-n {
-  font-family: var(--serif);
-  font-size: 3.2rem; font-weight: 400; line-height: 1;
-  color: #fff; letter-spacing: -0.025em; margin-bottom: 0.45rem;
-}
-.p-n em { font-style: italic; font-size: 2rem; color: var(--accent); }
-.p-desc {
-  font-size: 0.72rem; font-weight: 300;
-  line-height: 1.55; color: rgba(255,255,255,0.35);
-}
-.p-desc strong { display: block; font-weight: 400; color: rgba(255,255,255,0.6); margin-bottom: 0.1rem; }
-
-/* ── 3-COL CONCEPTS ── */
-.concepts {
-  padding: 5vw var(--p);
-  border-bottom: 1px solid var(--rule);
-}
-.c-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  margin-top: 2.5rem;
-}
-@media(max-width:680px){ .c-grid{ grid-template-columns:1fr; } }
-.c-cell {
-  padding: 1.75rem 2.5rem 1.75rem 0;
-  border-right: 1px solid var(--rule);
-  border-top: 1px solid var(--rule);
-}
-.c-cell:nth-child(-n+3) { border-top: none; }
-.c-cell:nth-child(3n+2),
-.c-cell:nth-child(3n+3) { padding-left: 2.5rem; }
-.c-cell:nth-child(3n) { border-right: none; padding-right: 0; }
-.c-cell:nth-child(1)  { padding-left: 0; }
-.c-name {
-  font-size: 0.82rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 0.5rem;
-}
-.c-desc {
-  font-size: 0.78rem; font-weight: 300;
-  color: var(--dim); line-height: 1.7;
-}
-
-/* ── MODEL + SECTOR ── */
-.model {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  border-bottom: 1px solid var(--rule);
-}
-@media(max-width:860px){ .model{ grid-template-columns:1fr; } }
-
-.model-main {
-  padding: 5vw var(--p);
-  border-right: 1px solid var(--rule);
-}
-
-.sector-panel {
-  padding: 5vw 2.5rem;
-  background: #f8f7f4;
-}
-.s-head {
+.aside-head {
   font-size: 0.58rem; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--dim); margin-bottom: 2rem; display: block;
 }
-.s-row {
-  display: grid;
-  grid-template-columns: 10ch 1fr 5ch;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0;
+.aside-item {
+  padding: 1.1rem 0;
   border-bottom: 1px solid var(--rule);
 }
-.s-row:last-of-type { border-bottom: none; }
-.s-lbl {
-  font-size: 0.75rem; font-weight: 300; color: var(--ink);
+.aside-item:first-of-type { border-top: 1px solid var(--rule); }
+.aside-label {
+  font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 0.3rem; display: block;
 }
-.s-track {
-  height: 1px; background: var(--rule); position: relative;
-}
-.s-fill {
-  position: absolute; top: 0; left: 0;
-  height: 1px; background: var(--accent);
-}
-.s-wave {
-  font-size: 0.6rem; font-weight: 400;
-  color: var(--dim); text-align: right;
-  letter-spacing: 0.06em;
+.aside-val {
+  font-size: 0.82rem; font-weight: 300;
+  color: var(--ink); line-height: 1.5;
 }
 
-/* sector diagram */
-.net-block {
-  margin-top: 3rem; padding-top: 2rem;
-  border-top: 1px solid var(--rule);
-}
-.net-head {
-  font-size: 0.58rem; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--dim); margin-bottom: 1.5rem; display: block;
-}
-
-/* ── PORTFOLIO: 3-col ── */
-.portfolio {
+/* ── WHY THE LAST MILE ── */
+.why-lastmile {
   padding: 5vw var(--p);
   border-bottom: 1px solid var(--rule);
 }
-.v-grid {
+.stat-row {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  margin-top: 2.5rem;
-}
-@media(max-width:680px){ .v-grid{ grid-template-columns:1fr; } }
-.v-cell {
-  padding: 1.75rem 2.5rem 1.75rem 0;
-  border-right: 1px solid var(--rule);
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 3rem;
   border-top: 1px solid var(--rule);
 }
-.v-cell:nth-child(-n+3) { border-top: none; }
-.v-cell:nth-child(3n+2),
-.v-cell:nth-child(3n+3) { padding-left: 2.5rem; }
-.v-cell:nth-child(3n) { border-right: none; padding-right: 0; }
-.v-cell:nth-child(1)  { padding-left: 0; }
-.v-wave {
+@media(max-width:760px){ .stat-row { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:460px){ .stat-row { grid-template-columns: 1fr; } }
+.stat-cell {
+  padding: 1.75rem 2rem 1.75rem 0;
+  border-right: 1px solid var(--rule);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:nth-child(n+2) { padding-left: 2rem; }
+.stat-n {
+  font-family: var(--serif);
+  font-size: 2.6rem; font-weight: 400; line-height: 1;
+  color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.5rem;
+}
+.stat-n em { font-style: italic; font-size: 1.6rem; color: var(--accent); }
+.stat-label {
+  font-size: 0.72rem; font-weight: 300;
+  color: var(--mid); line-height: 1.55;
+}
+.stat-label strong {
+  display: block; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem;
+}
+
+/* ── THESIS: LAST MILE PRODUCTS ── */
+.thesis {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+@media(max-width:860px){ .thesis { grid-template-columns:1fr; } }
+
+.thesis-aside {
+  padding: 5vw 2.5rem;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+}
+.thesis-aside .flag { color: rgba(255,255,255,0.2); }
+.thesis-aside h2 { color: #fff; font-size: clamp(1.6rem,3vw,2.4rem); }
+.thesis-aside h2 em { color: var(--accent); }
+.thesis-aside p {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.82rem; margin-top: 1.5rem;
+}
+
+.thesis-main {
+  padding: 5vw var(--p);
+  border-left: 1px solid var(--rule);
+}
+@media(max-width:860px){ .thesis-main { border-left: none; border-top: 1px solid var(--rule); } }
+
+.product-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+@media(max-width:640px){ .product-type-grid { grid-template-columns: 1fr; } }
+.pt-cell {
+  padding: 1.75rem 2rem 1.75rem 0;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pt-cell:nth-child(2n) { border-right: none; padding-right: 0; padding-left: 2rem; }
+.pt-cell:nth-last-child(-n+2) { border-bottom: none; }
+@media(max-width:640px){
+  .pt-cell { border-right: none; padding-left: 0; padding-right: 0; }
+  .pt-cell:nth-child(2n) { padding-left: 0; }
+  .pt-cell:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .pt-cell:last-child { border-bottom: none; }
+}
+.pt-icon {
   font-size: 0.58rem; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 0.6rem; display: block;
 }
-.v-name {
+.pt-name {
   font-size: 0.88rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3;
+  color: var(--ink); margin-bottom: 0.45rem; line-height: 1.3;
 }
-.v-desc {
+.pt-desc {
   font-size: 0.78rem; font-weight: 300;
-  color: var(--dim); line-height: 1.7;
+  color: var(--dim); line-height: 1.75;
 }
 
-/* ── ARC: dark 3-col ── */
-.arc {
+/* ── PORTFOLIO ── */
+.portfolio {
+  padding: 5vw var(--p);
+  border-bottom: 1px solid var(--rule);
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+@media(max-width:700px){ .company-grid { grid-template-columns: 1fr; } }
+
+.company-cell {
+  padding: 2.5rem 3rem 2.5rem 0;
+  border-right: 1px solid var(--rule);
+}
+.company-cell:last-child { border-right: none; padding-right: 0; padding-left: 3rem; }
+@media(max-width:700px){
+  .company-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 0; }
+  .company-cell:last-child { padding-left: 0; border-bottom: none; }
+}
+
+.co-sector {
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.75rem; display: block;
+}
+.co-name {
+  font-family: var(--serif);
+  font-size: 2rem; font-weight: 400; line-height: 1.1;
+  color: var(--ink); margin-bottom: 1.25rem;
+  letter-spacing: -0.015em;
+}
+.co-desc {
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem;
+}
+.co-signals {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.co-signal {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.78rem; font-weight: 300; color: var(--mid);
+  line-height: 1.55;
+}
+.co-signal:last-child { border-bottom: none; }
+.signal-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0; margin-top: 6px;
+}
+.co-status {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+}
+
+/* ── STUDIO PROCESS: dark ── */
+.studio-model {
   background: var(--ink);
   padding: 5vw var(--p);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.arc .flag { color: rgba(255,255,255,0.2); }
-.arc h2 { color: #fff; }
-.arc h2 em { color: rgba(255,255,255,0.35); }
-.arc-grid {
+.studio-model .flag { color: rgba(255,255,255,0.2); }
+.studio-model h2 { color: #fff; }
+.studio-model h2 em { color: rgba(255,255,255,0.3); }
+.studio-model p { color: rgba(255,255,255,0.4); }
+.studio-model mark { color: rgba(255,255,255,0.75); background: none; }
+
+.phase-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin-top: 2.5rem;
   border-top: 1px solid rgba(255,255,255,0.07);
 }
-@media(max-width:680px){ .arc-grid{ grid-template-columns:1fr; } }
-.arc-cell {
-  padding: 2rem 2.5rem 2rem 0;
+@media(max-width:760px){ .phase-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:460px){ .phase-grid { grid-template-columns: 1fr; } }
+.phase-cell {
+  padding: 2rem 2rem 2rem 0;
   border-right: 1px solid rgba(255,255,255,0.07);
 }
-.arc-cell:last-child { border-right: none; padding-right: 0; }
-.arc-cell:nth-child(n+2) { padding-left: 2.5rem; }
-.arc-when {
-  font-size: 0.58rem; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.75rem; display: block;
-}
-.arc-n {
+.phase-cell:last-child { border-right: none; }
+.phase-cell:nth-child(n+2) { padding-left: 2rem; }
+.phase-letter {
   font-family: var(--serif);
-  font-size: 2.8rem; font-style: italic;
-  color: rgba(255,255,255,0.1); line-height: 1;
+  font-size: 3rem; font-style: italic;
+  color: rgba(255,255,255,0.07); line-height: 1;
   margin-bottom: 0.5rem;
 }
-.arc-title {
-  font-size: 0.88rem; font-weight: 500;
+.phase-name {
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.5rem; display: block;
+}
+.phase-title {
+  font-size: 0.85rem; font-weight: 500;
   color: #fff; margin-bottom: 0.5rem;
 }
-.arc-body {
-  font-size: 0.78rem; font-weight: 300;
-  color: rgba(255,255,255,0.35); line-height: 1.75;
+.phase-body {
+  font-size: 0.75rem; font-weight: 300;
+  color: rgba(255,255,255,0.3); line-height: 1.75;
 }
 
-/* ── MOAT ── */
-.moat {
+/* ── CAPITAL ── */
+.capital {
   padding: 5vw var(--p);
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 8vw;
   border-bottom: 1px solid var(--rule);
 }
-@media(max-width:860px){ .moat{ grid-template-columns:1fr; gap:2rem; } }
+@media(max-width:860px){ .capital { grid-template-columns:1fr; gap:2rem; } }
 
-.moat-items { margin-top: 2rem; }
-.moat-item {
-  font-size: 0.82rem; font-weight: 300; color: var(--mid);
-  padding: 0.75rem 0;
+.cap-items { margin-top: 2rem; }
+.cap-item {
+  padding: 1rem 0;
   border-bottom: 1px solid var(--rule);
-  display: flex; align-items: center; gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 7ch 1fr;
+  gap: 1.25rem;
+  align-items: start;
 }
-.moat-item:first-child { border-top: 1px solid var(--rule); }
-.moat-dot {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
+.cap-item:first-child { border-top: 1px solid var(--rule); }
+.cap-source {
+  font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dim); padding-top: 0.15rem;
+}
+.cap-role {
+  font-size: 0.82rem; font-weight: 300;
+  color: var(--mid); line-height: 1.6;
+}
+.cap-role strong { font-weight: 500; color: var(--ink); }
+
+.raise-box {
+  background: var(--bg-warm);
+  padding: 2rem;
+  align-self: start;
+}
+.raise-head {
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 1.5rem; display: block;
+}
+.raise-n {
+  font-family: var(--serif);
+  font-size: 2.8rem; font-weight: 400; line-height: 1;
+  color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.4rem;
+}
+.raise-label {
+  font-size: 0.75rem; font-weight: 300;
+  color: var(--mid); line-height: 1.55; margin-bottom: 1.5rem;
+}
+.raise-detail {
+  font-size: 0.72rem; font-weight: 300;
+  color: var(--dim); line-height: 1.65;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── CLOSING ── */
+.closing {
+  padding: 6vw var(--p);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.closing-quote {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-style: italic; font-weight: 400;
+  color: var(--ink); line-height: 1.35;
+  max-width: 60ch; margin: 0 auto 2rem;
+}
+.closing-sub {
+  font-size: 0.8rem; font-weight: 300;
+  color: var(--dim); letter-spacing: 0.06em;
 }
 
 /* ── FOOTER ── */
@@ -406,236 +485,229 @@ footer a:hover { color: var(--accent); border-color: var(--accent); }
   <a href="#" class="mast-name">Nate</a>
   <div class="mast-r">
     <span class="dot"></span>
-    Venture Studio · London · San Francisco · Nairobi · South Africa
+    Venture Studio · London · Nairobi · San Francisco
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <div class="hero-kicker">Nate — a venture studio for the last mile</div>
-    <h1>The Last Mile<br><em>Operating System</em></h1>
-    <p class="hero-deck">Two billion frontline workers deliver the world's essential products and services. The infrastructure managing them hasn't meaningfully changed in twenty years.</p>
-  </div>
-  <div class="snaps">
-    <div class="snap" style="border-top:none;">
-      <div class="snap-l">The Gap</div>
-      <div class="snap-v">Every sector with a last mile has the same broken infrastructure — <strong>paper, WhatsApp, Excel, blind supervisors.</strong> Nate is rebuilding the last mile systems, one company at a time.</div>
-    </div>
-    <div class="snap">
-      <div class="snap-l">What Has Happened</div>
-      <div class="snap-v"><strong>AgentOS</strong>, backed by a $15M grant from the Gates Foundation and integrated with Apollo Agriculture, is in beta phase.</div>
-    </div>
-    <div class="snap" style="border-bottom:none;">
-      <div class="snap-l">Our Proposal</div>
-      <div class="snap-v">A venture studio building companies powered by AgentOS — each one purpose-built for the last mile of a different industry.</div>
-    </div>
-  </div>
+  <span class="hero-kicker">Nate — a venture studio for the last mile</span>
+  <h1>We build companies<br>for the <em>world's most</em><br><em>underserved markets</em></h1>
+  <p class="hero-deck">Two billion people work at the last mile — delivering medicines, distributing seeds, providing financial services in communities no platform has reached. We build the companies that make their work visible, manageable, and scalable.</p>
 </section>
 
-<!-- INSIGHT + PUNCHY STATS -->
-<div class="insight">
-  <div class="insight-main">
-    <span class="flag a">The founding insight</span>
-    <h2>A legibility problem,<br><em>not a motivation problem</em></h2>
-    <p>Every company that reaches a rural or underserved market depends on a ground-level worker — a community health worker, an agrodealer, a sales rep, a fintech field officer. These are the people who physically close the last mile. They are the operating layer that no technology has or can replace, and no logistics algorithm has or can make obsolete.</p>
-    <p>And yet the systems managing them are almost universally <mark>a patchwork of paper forms, messaging groups, Excel trackers, and supervisors who cannot see what is happening in the field.</mark> In FMCG alone, 86% of sales in emerging markets flow through informal channels invisible to the brand. A company running 500 field reps across a country sets targets based on what leaves the warehouse, not what reaches the shelf.</p>
+<!-- WHAT IS A VENTURE STUDIO -->
+<div class="studio-explainer">
+  <div class="studio-main">
+    <span class="flag a">What is a venture studio</span>
+    <h2>Not a fund.<br><em>Not a consultancy.</em></h2>
+    <p>A venture studio originates the ideas itself, builds the companies from scratch, and holds equity in what it creates.</p>
+    <p>Nate takes the founding risk. We source the problem, design the product, hire the first team, and provide the shared infrastructure — so each company starts with years of advantage rather than years of catch-up. In return, we hold 25–40% founding equity in every company we build.</p>
+    <p>The model was pioneered in deep-tech by firms like Flagship Pioneering — the studio behind Moderna. <mark>We are applying it to the last mile</mark>, where the problems are just as structural, and the compounding opportunity is just as large.</p>
+    <h3>Why this model works here</h3>
+    <p>Last-mile companies fail not because the market is too small, but because building them requires capabilities that no single founder can assemble alone — behavioural science, low-connectivity software architecture, field deployment experience, government relationships, and grant-to-equity financing expertise. Nate brings all of that to every company it builds. <mark>The studio is the unfair advantage.</mark></p>
     <blockquote>
-      <p>"Why does every company that sells, distributes, or delivers at the last mile manage the people doing it the same broken way?"</p>
+      <p>"We're not here to consult on the problem. We're here to own the solution — and convert grant-funded problems into investable businesses."</p>
     </blockquote>
-    <p>The problem is not motivation or training. It is that <mark>every function touching ground-level workers — recruiting, onboarding, supervision, incentives, coaching — runs in its own silo</mark>, with its own data and its own blind spots. Field performance is ungovernable not because it is unknowable, but because no one has built the infrastructure to manage it.</p>
-    <p>That infrastructure is AgentOS. It connects the functions, surfaces the data, and runs invisibly underneath the interfaces field workers already use. The field worker sees the interface they already use. The organisation finally sees what is happening.</p>
   </div>
-  <div class="punchy">
-    <div class="p-inner">
-      <div class="p-stat">
-        <div style="font-size:0.58rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:1.75rem;">The scale</div>
-        <div class="p-n">80<em>%</em></div>
-        <div class="p-desc"><strong>Of the global workforce is ground-level</strong> — 2.7 billion workers whose performance is almost entirely invisible to the organisations paying for it</div>
+  <div class="studio-aside">
+    <span class="aside-head">How we work</span>
+    <div class="aside-item">
+      <span class="aside-label">Origination</span>
+      <div class="aside-val">50+ ideas sourced per cycle from field practitioners, corporate leaders, and development experts</div>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Validation</span>
+      <div class="aside-val">Ideas stress-tested against 25 frameworks. Most die. The ones that survive earn a founding team.</div>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Build</span>
+      <div class="aside-val">MVP built with a dedicated EIR. Real users, real data, tight runway, clear kill conditions.</div>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Spin-out</span>
+      <div class="aside-val">One company per cycle earns a name, a team, and a seed round. Nate retains 25–40% equity.</div>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Capital model</span>
+      <div class="aside-val">Philanthropic capital de-risks early stages. Strategic corporates enter at growth. Built for public good, designed for private scale.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY THE LAST MILE -->
+<div class="why-lastmile">
+  <span class="flag">Why the last mile</span>
+  <h2>The same broken system,<br><em>in every sector</em></h2>
+  <p style="max-width:62ch; margin-top:1.25rem;">Community health workers in Kenya, seed dealers in India, field sales reps across FMCG in Nigeria — these workers are managed the same way. Paper forms. WhatsApp groups. Excel trackers. Supervisors who cannot see what is happening in the field. The infrastructure hasn't changed in twenty years. And yet the opportunity — for impact and for returns — has never been larger.</p>
+
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-n">2<em>B+</em></div>
+      <div class="stat-label"><strong>Frontline workers globally</strong> whose performance is almost entirely invisible to the organisations paying for it</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">86<em>%</em></div>
+      <div class="stat-label"><strong>Of FMCG sales in emerging markets</strong> flow through informal channels invisible to the brand</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">$4.3<em>B</em></div>
+      <div class="stat-label"><strong>Annual spend on community health workers</strong> across Africa — almost none of it tracked at the worker level</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">0<em>%</em></div>
+      <div class="stat-label"><strong>Of last-mile management infrastructure</strong> was purpose-built for the workers using it. Until now.</div>
+    </div>
+  </div>
+</div>
+
+<!-- THESIS: LAST MILE PRODUCTS -->
+<div class="thesis">
+  <div class="thesis-aside">
+    <span class="flag">Our product thesis</span>
+    <h2>The last mile<br>needs <em>four</em><br>kinds of<br>companies</h2>
+    <p>Every sector that reaches the last mile is missing the same infrastructure. Not consumer apps. Not logistics platforms. The missing layer is always management, visibility, and distribution intelligence — and it is always sector-specific enough that no horizontal tool has cracked it.</p>
+  </div>
+  <div class="thesis-main">
+    <div class="product-type-grid">
+      <div class="pt-cell">
+        <span class="pt-icon">Type 01</span>
+        <div class="pt-name">Intelligence &amp; visibility</div>
+        <div class="pt-desc">Managers, governments, and funders running last-mile programmes are making decisions with no data. The field is a black box. The first category of company Nate builds turns operational data — from field visits, task completions, and agent interactions — into dashboards and decisions. If you can't see it, you can't improve it.</div>
       </div>
-      <div class="p-stat">
-        <div class="p-n">86<em>%</em></div>
-        <div class="p-desc"><strong>Of FMCG sales in emerging markets</strong> flow through informal indirect channels — no visibility on price, promotion, or shelf presence</div>
+      <div class="pt-cell">
+        <span class="pt-icon">Type 02</span>
+        <div class="pt-name">Workforce management</div>
+        <div class="pt-desc">Recruiting, training, supervising, and incentivising field workers is done by hand in almost every programme on the continent. It is slow, expensive, and produces inconsistent results. The second category replaces that manual layer with software that works in low-connectivity environments, speaks to workers where they already are, and runs supervision at scale.</div>
       </div>
-      <div class="p-stat">
-        <div class="p-n">25–35<em>%</em></div>
-        <div class="p-desc"><strong>Annual attrition in FMCG field sales roles</strong> — continuous replacement pressure, territory knowledge lost on every exit</div>
+      <div class="pt-cell">
+        <span class="pt-icon">Type 03</span>
+        <div class="pt-name">Distribution infrastructure</div>
+        <div class="pt-desc">Medicines, seeds, financial products, clean energy hardware — they all need to reach the same household. But they travel on separate trucks, through separate agents, managed by separate organisations. The third category builds the shared distribution layer that closes the last mile for multiple products at once, turning delivery into an economic asset for the agent doing it.</div>
       </div>
-      <div class="p-stat">
-        <div class="p-n">950<em>K</em></div>
-        <div class="p-desc"><strong>CHW shortage across Africa</strong> against need — with only 14% of existing workers salaried and supervision chronically underfunded</div>
+      <div class="pt-cell">
+        <span class="pt-icon">Type 04</span>
+        <div class="pt-name">Behavioural data networks</div>
+        <div class="pt-desc">Every agent interaction contains a signal. What products are being asked for. Which households are adopting. Where demand is building before supply knows it. The fourth category captures that signal systematically, building data assets that are valuable to programme managers, to funders, and ultimately to the capital markets that price risk in emerging economies.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- AGENTOS: 3-col three layers -->
-<div class="concepts">
-  <span class="flag">AgentOS — the infrastructure underneath</span>
-  <div class="c-grid">
-    <div class="c-cell">
-      <div class="c-name">The operating layer</div>
-      <div class="c-desc">AgentOS handles everything every last-mile company needs but should never have to rebuild — recruiting, credentialing, training, task assignment, supervision, incentives, performance tracking. It gets smarter with every Nate deployment. A CHW programme in Kenya teaches it something a seed dealer programme in India immediately benefits from. The knowledge compounds across the entire portfolio.</div>
-    </div>
-    <div class="c-cell">
-      <div class="c-name">Invisible infrastructure, familiar front-end</div>
-      <div class="c-desc">The field worker never sees AgentOS. They see WhatsApp — or whatever interface they already use. AgentOS runs silently underneath, turning natural conversations into verified task completions, performance data, and supervision signals. Adoption is not a problem you solve. It disappears. You are not asking anyone to change behaviour. You meet them exactly where they already are.</div>
-    </div>
-    <div class="c-cell">
-      <div class="c-name">The intelligence exchange</div>
-      <div class="c-desc">Every deployment generates two types of intelligence — agent intelligence (who performs, how, under what conditions) and domain intelligence (what works in seeds, in health, in FMCG). Nate sits at the intersection of all of it. A company that wants to work with farmer agents gets access to Nate's accumulated knowledge of what makes a great one. In return, their deployment feeds domain intelligence back into the network. Both sides get smarter. The network grows more valuable with every sector it touches.</div>
-    </div>
-  </div>
-</div>
-
-<!-- MODEL + SECTOR VISUAL -->
-<div class="model">
-  <div class="model-main">
-    <span class="flag">The investor case</span>
-    <h2>Three assets,<br><em>one compounding system</em></h2>
-    <p>Most venture studios have one asset: equity in the companies they build. Nate has three, and each one makes the others more valuable.</p>
-    <h3>The ventures</h3>
-    <p>Each company Nate builds is a standalone asset — its own customers, contracts, and exit potential. Nate holds 25–40% founding equity in each. Managed service contracts generate fee income from day one, bridging the cash gap that kills most studios before exits materialise.</p>
-    <h3>The OS</h3>
-    <p>AgentOS appreciates underneath every venture. Each deployment makes it harder to replicate. A competitor entering the CHW sector starts from zero — no low-connectivity architecture, no behavioural data, no reference deployments. A Nate venture starts <mark>years ahead.</mark> The OS is the meta-asset that grows whether or not any single venture exits.</p>
-    <h3>The network</h3>
-    <p>This is the asset that changes the scale of the ambition. Every deployment generates agent intelligence and domain intelligence. Nate accumulates both. Over time, <mark>Nate becomes the world's most valuable dataset on informal workforce performance</mark> — across every sector that depends on the last mile. The more sectors it touches, the more valuable every deployment becomes. That is a data network with compounding returns, not just a portfolio of companies.</p>
-  </div>
-  <div class="sector-panel">
-    <span class="s-head">Sectors in scope</span>
-    <div class="s-row">
-      <span class="s-lbl">Community health</span>
-      <div class="s-track"><div class="s-fill" style="width:92%"></div></div>
-      <span class="s-wave">Wave 1</span>
-    </div>
-    <div class="s-row">
-      <span class="s-lbl">Agriculture</span>
-      <div class="s-track"><div class="s-fill" style="width:88%"></div></div>
-      <span class="s-wave">Wave 1</span>
-    </div>
-    <div class="s-row">
-      <span class="s-lbl">FMCG</span>
-      <div class="s-track"><div class="s-fill" style="width:55%"></div></div>
-      <span class="s-wave">Wave 2</span>
-    </div>
-    <div class="s-row">
-      <span class="s-lbl">Clean energy</span>
-      <div class="s-track"><div class="s-fill" style="width:50%"></div></div>
-      <span class="s-wave">Wave 2</span>
-    </div>
-    <div class="s-row">
-      <span class="s-lbl">Fintech</span>
-      <div class="s-track"><div class="s-fill" style="width:30%"></div></div>
-      <span class="s-wave">Wave 3</span>
-    </div>
-    <div class="s-row">
-      <span class="s-lbl">Logistics</span>
-      <div class="s-track"><div class="s-fill" style="width:25%"></div></div>
-      <span class="s-wave">Wave 3</span>
-    </div>
-
-    <div class="net-block">
-      <span class="net-head">AgentOS at the centre</span>
-      <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
-        <line x1="130" y1="64" x2="130" y2="22"  stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <line x1="130" y1="96" x2="130" y2="138" stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <line x1="116" y1="70" x2="76"  y2="48"  stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <line x1="144" y1="70" x2="184" y2="48"  stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <line x1="116" y1="90" x2="76"  y2="112" stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <line x1="144" y1="90" x2="184" y2="112" stroke="#5c6b3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-        <circle cx="130" cy="80" r="22" fill="#111111"/>
-        <text x="130" y="76" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="6" font-weight="500" fill="white" letter-spacing="0.08em">AGENT</text>
-        <text x="130" y="86" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="6" font-weight="500" fill="white" letter-spacing="0.08em">OS</text>
-        <circle cx="130" cy="14" r="10" fill="#eef1e6" stroke="#5c6b3a" stroke-width="1"/>
-        <text x="130" y="18" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#5c6b3a">Health</text>
-        <circle cx="130" cy="146" r="10" fill="#eef1e6" stroke="#5c6b3a" stroke-width="1"/>
-        <text x="130" y="150" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#5c6b3a">Logistics</text>
-        <circle cx="66" cy="42" r="10" fill="#f4f3f0" stroke="#e8e6e0" stroke-width="1"/>
-        <text x="66" y="46" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#666662">Agri</text>
-        <circle cx="194" cy="42" r="10" fill="#f4f3f0" stroke="#e8e6e0" stroke-width="1"/>
-        <text x="194" y="46" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#666662">FMCG</text>
-        <circle cx="66" cy="118" r="10" fill="#f4f3f0" stroke="#e8e6e0" stroke-width="1"/>
-        <text x="66" y="122" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#666662">Energy</text>
-        <circle cx="194" cy="118" r="10" fill="#f4f3f0" stroke="#e8e6e0" stroke-width="1"/>
-        <text x="194" y="122" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="5.5" fill="#666662">Fintech</text>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<!-- HYPOTHESES: 2-col grid -->
+<!-- PORTFOLIO: TWO COMPANIES -->
 <div class="portfolio">
-  <span class="flag">Our ongoing hypotheses</span>
-  <div class="v-grid">
-    <div class="v-cell">
-      <div class="v-name">Can the agent become an early warning system?</div>
-      <div class="v-desc">The earliest signal of any disease outbreak is not a clinic or a survey — it is the person who visits households before anyone else does. What if the infrastructure managing that visit also captured what she saw?</div>
+  <span class="flag">Our first two companies</span>
+  <h2>Building from the<br><em>pattern we know best</em></h2>
+  <p style="max-width:58ch; margin-top:1.25rem;">We started where the evidence was strongest and the infrastructure gap most visible — agricultural agent networks and community health worker programmes. Both sectors are large, government-adjacent, and chronically underinvested in management infrastructure.</p>
+
+  <div class="company-grid">
+    <div class="company-cell">
+      <span class="co-sector">Agriculture · FMCG · Field Sales</span>
+      <div class="co-name">AgentBI</div>
+      <div class="co-desc">AgentBI is a business intelligence platform for organisations that run field agent networks. It connects the functions that currently run in silos — recruitment, onboarding, task assignment, supervision, performance tracking, and incentives — and surfaces the resulting data as actionable insight for programme managers, corporate clients, ministries, and funders.</div>
+      <p style="font-size:0.82rem;">The field manager finally sees what is happening. The organisation finally knows who is performing, why, and under what conditions. AgentBI makes the invisible visible — without asking the field worker to change a single behaviour.</p>
+      <div class="co-signals">
+        <div class="co-signal"><span class="signal-dot"></span>Backed by a $15M grant from the Gates Foundation; integrated with Apollo Agriculture in beta</div>
+        <div class="co-signal"><span class="signal-dot"></span>Built on fieldwork from EMBE — one of the most rigorous studies of agricultural agent networks in Africa</div>
+        <div class="co-signal"><span class="signal-dot"></span>Deployed via WhatsApp and low-connectivity interfaces agents already use — zero behaviour change required</div>
+        <div class="co-signal"><span class="signal-dot"></span>Addressable across agriculture, FMCG, clean energy, and fintech field sales networks</div>
+      </div>
+      <span class="co-status">In beta · Gates Foundation-backed</span>
     </div>
-    <div class="v-cell">
-      <div class="v-name">Can one worker do many things?</div>
-      <div class="v-desc">A health worker, a seed advisor, a financial agent — governments and companies train them separately, deploy them separately, and manage them separately. But they visit the same households. What if a single worker, properly supported, could cross skill boundaries — and what if AgentOS was the infrastructure that made that manageable?</div>
-    </div>
-    <div class="v-cell">
-      <div class="v-name">Can the agent replace the supply chain?</div>
-      <div class="v-desc">Contraceptives, seeds, and medicines travel on separate trucks to the same village. What if the agent was the distribution point?</div>
-    </div>
-    <div class="v-cell">
-      <div class="v-name">Can the agent make markets visible?</div>
-      <div class="v-desc">Prices, demand, stock levels at the last mile are invisible to everyone above the distribution chain. What if every agent visit was a market data point?</div>
+
+    <div class="company-cell">
+      <span class="co-sector">Community Health · Government</span>
+      <div class="co-name">HealthBI</div>
+      <div class="co-desc">HealthBI is a managed service and intelligence platform for community health worker programmes run by governments and health ministries. Africa has committed to deploying 2 million community health workers — but the infrastructure to recruit, train, deploy, supervise, and retain them at that scale does not yet exist.</div>
+      <p style="font-size:0.82rem;">HealthBI provides it. It manages the full lifecycle of the CHW workforce — from recruitment to household visit data to performance payments — and gives programme managers the visibility they need to run a national health workforce like a high-functioning organisation rather than a collection of individuals.</p>
+      <div class="co-signals">
+        <div class="co-signal"><span class="signal-dot"></span>Addresses Africa's $4.3B/year CHW workforce — fewer than 14% of workers currently salaried or formally supervised</div>
+        <div class="co-signal"><span class="signal-dot"></span>Designed for government procurement: managed service contracts generate revenue from day one</div>
+        <div class="co-signal"><span class="signal-dot"></span>Household visit data captured through HealthBI creates the continent's most granular community health dataset</div>
+        <div class="co-signal"><span class="signal-dot"></span>CHW visit patterns are the earliest signal of disease burden — before any clinic or survey sees it</div>
+      </div>
+      <span class="co-status">In development · Pipeline open</span>
     </div>
   </div>
 </div>
 
-<!-- INVESTMENT ARC: dark, 3-col -->
-<div class="arc">
-  <span class="flag">The investment arc</span>
-  <h2>From hypothesis<br><em>to company to scale</em></h2>
-  <div class="arc-grid">
-    <div class="arc-cell">
-      <span class="arc-when">Phase 1 · Now</span>
-      <div class="arc-n">1</div>
-      <div class="arc-title">Build the studio, crowdsource the hypotheses</div>
-      <div class="arc-body">Set up operations across London and Nairobi. Run structured hypothesis generation — drawing on practitioners, field programmes, and domain experts — to build a pipeline of 50+ "what if" questions about the last mile. Begin validating AgentOS in its first anchor deployment.</div>
+<!-- STUDIO PROCESS: DARK -->
+<div class="studio-model">
+  <span class="flag">The studio process</span>
+  <h2>From idea to<br><em>investable company</em></h2>
+  <p style="max-width:55ch; margin-top:1.25rem;">Most last-mile companies fail not because the problem is wrong, but because the company was underfunded, under-resourced, or built by a team without the right mix of skills. The studio model eliminates those failure modes by sharing infrastructure across every company it builds.</p>
+  <div class="phase-grid">
+    <div class="phase-cell">
+      <div class="phase-letter">A</div>
+      <span class="phase-name">Ideation</span>
+      <div class="phase-title">Source 50 high-quality ideas</div>
+      <div class="phase-body">Each cycle begins with structured hypothesis generation — drawing on corporate leaders, development practitioners, field researchers, and domain experts to build a pipeline of "what if" questions about the last mile.</div>
     </div>
-    <div class="arc-cell">
-      <span class="arc-when">Phase 2 · +12 months</span>
-      <div class="arc-n">2</div>
-      <div class="arc-title">From 50 hypotheses to 2 proto-companies</div>
-      <div class="arc-body">Run each hypothesis through a disciplined kill process — customer validation, field testing, killer experiment. Most die. Two survive with enough evidence to warrant building. Each becomes a numbered proto-company: no name, tight runway, clear kill conditions.</div>
+    <div class="phase-cell">
+      <div class="phase-letter">B</div>
+      <span class="phase-name">Validation</span>
+      <div class="phase-title">Stress-test down to 15</div>
+      <div class="phase-body">25 frameworks applied to every idea: customer validation, unit economics, field feasibility, killer experiments. The ones that survive this process have earned the right to be built.</div>
     </div>
-    <div class="arc-cell">
-      <span class="arc-when">Phase 3 · Spin-out</span>
-      <div class="arc-n">3</div>
-      <div class="arc-title">From 2 proto-companies to 1 spun-out company</div>
-      <div class="arc-body">The two proto-companies compete on evidence. One proves measurable traction — a government contract, a paying corporate client, a replicable deployment. That company earns a name, a founding team, and Nate's 25–40% equity stake. It spins out. The process repeats.</div>
+    <div class="phase-cell">
+      <div class="phase-letter">C</div>
+      <span class="phase-name">Creation</span>
+      <div class="phase-title">Match EIRs, build MVPs</div>
+      <div class="phase-body">Each validated idea gets a dedicated Entrepreneur in Residence, a founding team, and a tight MVP runway. Real users, real data, clear kill conditions. No sacred cows.</div>
+    </div>
+    <div class="phase-cell">
+      <div class="phase-letter">D</div>
+      <span class="phase-name">Spin-out</span>
+      <div class="phase-title">One company earns its name</div>
+      <div class="phase-body">The company with measurable traction — a government contract, a paying client, a replicable deployment — spins out with a name, a full team, and Nate's 25–40% equity stake. The cycle repeats.</div>
     </div>
   </div>
 </div>
 
-<!-- MOAT -->
-<div class="moat">
+<!-- CAPITAL STRUCTURE -->
+<div class="capital">
   <div>
-    <span class="flag">The structural moat</span>
-    <h2>Behavioural data,<br><em>not software</em></h2>
-    <p>Software can be copied. Behavioural data cannot. Every deployment Nate runs generates knowledge that no competitor can replicate without running the same deployments — which supervision models hold across cultures, which incentive structures reduce attrition, which interventions produce outcomes that funders will actually pay for.</p>
-    <p>But the deeper moat is not data. It is trust. Governments and multinationals do not hand over their last-mile workforces to organisations without a track record. <mark>Nate builds that track record systematically — one deployment, one sector, one country at a time.</mark> By the time a competitor arrives, Nate has the contracts, the data, and the relationships that take a decade to build.</p>
+    <span class="flag">Capital structure</span>
+    <h2>Built for public good,<br><em>designed for private scale</em></h2>
+    <p>Nate sits at the intersection of philanthropic capital and private markets — and that intersection is intentional. The earliest validation is funded by grants. The growth stage is funded by strategic corporates. The exit is driven by the private market. Each type of capital does what it is best at.</p>
+    <div class="cap-items">
+      <div class="cap-item">
+        <div class="cap-source">Grants</div>
+        <div class="cap-role"><strong>De-risks ideation and early validation.</strong> Gates Foundation, CGIAR, bilateral aid. Funds the work that is too early for investment but too important to leave unfunded.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-source">Studio</div>
+        <div class="cap-role"><strong>Builds and validates product-market fit.</strong> Nate's own capital covers EIR costs, shared infrastructure, and the operating layer every portfolio company benefits from.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-source">Strategic</div>
+        <div class="cap-role"><strong>Enters at growth stage.</strong> Mastercard, Google, Unilever, Microsoft — corporates with distribution reach and acquisition intent who cannot originate these opportunities themselves.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-source">Markets</div>
+        <div class="cap-role"><strong>Prices the exits.</strong> Secondary sales at Series A and full exit at Series B. By that point, the company has converted from grant-funded to investable — and the market knows what to do with it.</div>
+      </div>
+    </div>
   </div>
   <div>
-    <div style="font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim);margin-bottom:0.75rem;">Why this is defensible</div>
-    <div class="moat-items">
-      <div class="moat-item"><span class="moat-dot"></span>Behavioural data compounds across every sector deployment</div>
-      <div class="moat-item"><span class="moat-dot"></span>Each venture cheaper to build than the last — playbook already exists</div>
-      <div class="moat-item"><span class="moat-dot"></span>Managed service fees bridge the cash gap from day one</div>
-      <div class="moat-item"><span class="moat-dot"></span>Activity records become financial underwriting assets in Wave 2</div>
-      <div class="moat-item"><span class="moat-dot"></span>Operational credibility opens government and multinational doors no startup reaches</div>
-      <div class="moat-item"><span class="moat-dot"></span>Founder economics — 25–40% equity at near-zero cost per venture</div>
+    <div class="raise-box">
+      <span class="raise-head">Current raise</span>
+      <div class="raise-n">$3M</div>
+      <div class="raise-label">First close — builds next 3 companies over 18 months</div>
+      <div class="raise-detail">
+        Projected Builder I NAV: $30M–$120M<br>
+        Target: 8–10 spinouts over 5 years<br>
+        80% into company building · 20% management<br><br>
+        Exit via secondaries at Series A (25%) and full exit at Series B (100%)
+      </div>
     </div>
   </div>
 </div>
 
-<!-- CLOSING STATEMENT -->
-<div style="padding: 5vw var(--p); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); text-align: center;">
-  <p style="font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-style: italic; font-weight: 400; color: var(--ink); line-height: 1.35; max-width: 60ch; margin: 0 auto;">The last mile has two billion people in it. None of them have had infrastructure built for them. Until now.</p>
+<!-- CLOSING -->
+<div class="closing">
+  <p class="closing-quote">The last mile has two billion people in it. Every single one of them deserves infrastructure built for them. That is what we are doing.</p>
+  <span class="closing-sub">Better for people. Better for planet. Better for partners.</span>
 </div>
 
 <!-- FOOTER -->
