@@ -47,7 +47,7 @@ h1 em{font-style:normal;color:var(--accent)}
 h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:400;line-height:1.1;letter-spacing:normal;color:var(--ink)}
 h2 em{font-style:normal;color:var(--accent)}
 h3{font-size:.82rem;font-weight:500;letter-spacing:.01em;color:var(--ink);margin:2.25rem 0 .4rem}
-p{font-size:.9rem;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:1rem}
+p{font-size:.9rem;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:1rem;max-width:64ch}
 p:last-child{margin-bottom:0}
 mark{background:none;color:#2f5d43}
 blockquote{margin:2.25rem 0;padding:1.25rem 1.25rem 1.25rem 1.5rem;border-left:2px solid var(--accent);background:var(--accent-l)}
@@ -55,15 +55,15 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .insight{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.insight{grid-template-columns:1fr}}
 .insight-main{padding:5vw var(--p);border-right:1px solid var(--rule)}
-.punchy{background:var(--ink);padding:5vw 2.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.punchy{background:#22452f;padding:5vw 2.5rem;display:flex;flex-direction:column;justify-content:space-between}
 .p-inner{display:flex;flex-direction:column;gap:0}
-.p-stat{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.p-stat{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
 .p-stat:first-child{padding-top:0}
 .p-stat:last-child{border-bottom:none}
 .p-n{font-family:var(--serif);font-size:3.2rem;font-weight:400;line-height:1;color:#fff;letter-spacing:normal;margin-bottom:.45rem}
 .p-n em{font-style:italic;font-size:2rem;color:#8fb89a}
-.p-desc{font-size:.72rem;font-weight:300;line-height:1.55;color:rgba(255,255,255,.35)}
-.p-desc strong{display:block;font-weight:400;color:rgba(255,255,255,.6);margin-bottom:.1rem}
+.p-desc{font-size:.72rem;font-weight:300;line-height:1.55;color:rgba(255,255,255,.62)}
+.p-desc strong{display:block;font-weight:400;color:rgba(255,255,255,.88);margin-bottom:.1rem}
 .concepts{padding:5vw var(--p);border-bottom:1px solid var(--rule)}
 .c-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem}
 @media(max-width:680px){.c-grid{grid-template-columns:1fr}}
@@ -75,7 +75,7 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .c-name{font-size:.82rem;font-weight:500;color:var(--ink);margin-bottom:.5rem}
 .c-desc{font-size:.78rem;font-weight:300;color:var(--dim);line-height:1.7}
 .fund-section{padding:5vw var(--p);border-bottom:1px solid var(--rule)}
-.fund-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.fund-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
 .fund-number{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:400;color:var(--ink);letter-spacing:normal}
 .fund-theme{font-size:.75rem;font-weight:300;color:var(--mid);border-left:2px solid var(--accent);padding-left:.75rem;line-height:1.4}
 .fund-theme strong{display:block;font-weight:500;color:var(--ink)}
@@ -91,6 +91,10 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 @media(max-width:680px){.co-meta{grid-template-columns:1fr}}
 .co-k{font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.15rem}
 .co-v{font-size:.78rem;font-weight:400;color:var(--ink)}
+.co-demo,.co-cta{display:inline-block;font-weight:500;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:opacity .2s ease}
+.co-demo{margin-top:.5rem;font-size:.72rem;letter-spacing:.02em}
+.co-cta{margin-top:1.1rem;font-size:.8rem;line-height:1.5}
+.co-demo:hover,.co-cta:hover{opacity:.6}
 .model{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.model{grid-template-columns:1fr}}
 .model-main{padding:5vw var(--p);border-right:1px solid var(--rule)}
@@ -113,19 +117,19 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .t-wave.active{color:var(--accent)}
 .t-name{font-size:.88rem;font-weight:500;color:var(--ink);margin-bottom:.4rem;line-height:1.3}
 .t-desc{font-size:.78rem;font-weight:300;color:var(--dim);line-height:1.7}
-.arc{background:var(--ink);padding:5vw var(--p)}
-.arc .flag{color:rgba(255,255,255,.2)}
+.arc{background:#22452f;padding:5vw var(--p)}
+.arc .flag{color:#8fb89a}
 .arc h2{color:#fff}
 .arc h2 em{color:#8fb89a}
-.arc-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.07)}
+.arc-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.14)}
 @media(max-width:680px){.arc-grid{grid-template-columns:1fr}}
-.arc-cell{padding:2rem 2.5rem 2rem 0;border-right:1px solid rgba(255,255,255,.07)}
+.arc-cell{padding:2rem 2.5rem 2rem 0;border-right:1px solid rgba(255,255,255,.14)}
 .arc-cell:last-child{border-right:none;padding-right:0}
 .arc-cell:nth-child(n+2){padding-left:2.5rem}
 .arc-when{font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8fb89a;margin-bottom:.75rem;display:block}
-.arc-n{font-family:var(--serif);font-size:2.8rem;font-style:italic;color:rgba(255,255,255,.1);line-height:1;margin-bottom:.5rem}
+.arc-n{font-family:var(--serif);font-size:2.8rem;font-style:italic;color:rgba(255,255,255,.25);line-height:1;margin-bottom:.5rem}
 .arc-title{font-size:.88rem;font-weight:500;color:#fff;margin-bottom:.5rem}
-.arc-body{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.35);line-height:1.75}
+.arc-body{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.62);line-height:1.75}
 .moat{padding:5vw var(--p);display:grid;grid-template-columns:1fr 320px;gap:8vw;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.moat{grid-template-columns:1fr;gap:2rem}}
 .moat-items{margin-top:2rem}
@@ -200,7 +204,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   </div>
   <div class="punchy">
     <div class="p-inner">
-      <div class="p-stat"><div style="font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:1.75rem">The market</div><div class="p-n">$9.8<em>T</em></div><div class="p-desc"><strong>Global public sector technology opportunity</strong> — WEF 2025</div></div>
+      <div class="p-stat"><div style="font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.75rem">The market</div><div class="p-n">$9.8<em>T</em></div><div class="p-desc"><strong>Global public sector technology opportunity</strong> — WEF 2025</div></div>
       <div class="p-stat"><div class="p-n">$20<em>B+</em></div><div class="p-desc"><strong>GovTech deal value in 2025</strong> — busiest year on record</div></div>
       <div class="p-stat"><div class="p-n">2<em>B</em></div><div class="p-desc"><strong>Frontline workers in public service delivery</strong> globally — fewer than 5% managed by software built for their context</div></div>
     </div>
@@ -225,13 +229,15 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <span class="co-tag">Portfolio Company 01</span>
       <div class="co-name">AgentBI</div>
       <div class="co-desc">The business intelligence layer for public sector field workforces. Surfaces task completion, supervision patterns, incentive uptake, and retention signals as actionable insight for programme managers, governments, and funders. <mark>Adam Grunewald is the founder selected to lead it.</mark></div>
+      <a class="co-demo" href="https://ngill-blip.github.io/agentbi-demo/" target="_blank" rel="noopener">View the demo →</a>
       <div class="co-meta"><div><span class="co-k">Status</span><span class="co-v">Gates Foundation grant ($15M)</span></div><div><span class="co-k">Anchor Partner</span><span class="co-v">Apollo Agriculture</span></div><div><span class="co-k">Geography</span><span class="co-v">Kenya → Multi-country</span></div></div>
     </div>
     <div class="co-cell">
-      <span class="co-tag">Sourcing Ideas</span>
+      <span class="co-tag"><span class="dot" style="display:inline-block;vertical-align:middle;margin-right:7px"></span>Sourcing Ideas</span>
       <div class="co-name">Healthcare Frontline Enablement</div>
       <div class="co-desc">Sourcing ideas for frontline enablement in healthcare — the same infrastructure thesis applied to community health workforces. Ideas are being generated and proto-tested under the theme; none spun out yet.</div>
       <div class="co-meta"><div><span class="co-k">Status</span><span class="co-v">Sourcing ideas</span></div><div><span class="co-k">Market</span><span class="co-v">Africa's 2M CHW commitment</span></div><div><span class="co-k">Annual Public Spend</span><span class="co-v">$4.3B/year</span></div></div>
+      <a class="co-cta" href="mailto:hello@petersonandgill.com">Apply to be a co-founder or join the team prototyping companies →</a>
     </div>
   </div>
 </div>
