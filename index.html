@@ -8,20 +8,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--white:#ffffff;--ink:#111111;--mid:#666662;--dim:#aaa9a4;--rule:#e8e6e0;--accent:#5c6b3a;--accent-l:#eef1e6;--sans:'Instrument Sans','Helvetica Neue',sans-serif;--serif:'Instrument Serif',Georgia,serif;--p:5vw}
+:root{--white:#f0eee6;--ink:#191919;--mid:#6b6a63;--dim:#9b9a92;--rule:#e3decf;--accent:#cc785c;--accent-l:#ede4db;--sans:'Instrument Sans','Helvetica Neue',sans-serif;--serif:'Instrument Serif',Georgia,serif;--p:5vw}
 html{scroll-behavior:smooth}
 body{background:var(--white);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.mast{padding:0 var(--p);height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule)}
-.mast-name{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none}
-.mast-r{font-size:.62rem;font-weight:300;letter-spacing:.08em;color:var(--dim);display:flex;align-items:center;gap:8px}
+.mast{position:sticky;top:0;z-index:50;padding:0 var(--p);height:78px;display:flex;align-items:center;justify-content:space-between;background:rgba(240,238,230,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:height .35s cubic-bezier(.4,0,.2,1),border-color .35s ease}
+.mast.scrolled{height:50px;border-bottom:1px solid var(--rule)}
+.mast-logo{display:flex;align-items:baseline;gap:.6rem;text-decoration:none;line-height:1}
+.mast-mark{font-family:var(--serif);font-size:1.75rem;font-weight:400;letter-spacing:-.005em;color:var(--ink);transition:font-size .35s cubic-bezier(.4,0,.2,1)}
+.mast.scrolled .mast-mark{font-size:1.1rem}
+.mast-sub{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);white-space:nowrap;overflow:hidden;max-width:14ch;opacity:1;transition:opacity .3s ease,max-width .35s cubic-bezier(.4,0,.2,1),margin .35s ease}
+.mast.scrolled .mast-sub{opacity:0;max-width:0;margin-left:-.6rem}
+.mast-r{font-size:.62rem;font-weight:300;letter-spacing:.08em;color:var(--dim);display:flex;align-items:center;gap:8px;transition:opacity .3s ease}
+.mast.scrolled .mast-r{opacity:.55}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 2.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.15}}
-.fund-tag{padding:1.5rem var(--p);background:var(--accent-l);border-bottom:1px solid #d4dbc2;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.fund-tag{padding:1.5rem var(--p);background:var(--accent-l);border-bottom:1px solid #ddd0c6;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .fund-pill{font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--white);background:var(--accent);padding:.3rem .75rem;border-radius:2px;white-space:nowrap}
 .fund-label{font-size:.78rem;font-weight:300;color:var(--accent);line-height:1.5}
 .fund-label strong{font-weight:500}
 .fund-cos{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap}
-.fund-co{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid #c4ceac;padding:.25rem .6rem;border-radius:2px}
+.fund-co{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid #dccabf;padding:.25rem .6rem;border-radius:2px}
 .hero{padding:7vw var(--p) 6vw;display:grid;grid-template-columns:1fr 28ch;gap:8vw;align-items:end;border-bottom:1px solid var(--rule)}
 @media(max-width:780px){.hero{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem 3rem}:root{--p:2rem}}
 .hero-kicker{font-size:.62rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
@@ -85,7 +91,7 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .model{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.model{grid-template-columns:1fr}}
 .model-main{padding:5vw var(--p);border-right:1px solid var(--rule)}
-.capital-stack{padding:5vw 2.5rem;background:#f8f7f4}
+.capital-stack{padding:5vw 2.5rem;background:#e9e4d8}
 .cs-head{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:2rem;display:block}
 .cs-row{padding:1rem 0;border-bottom:1px solid var(--rule)}
 .cs-row:last-child{border-bottom:none}
@@ -143,9 +149,9 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 </style>
 </head>
 <body>
-<header class="mast">
-  <a href="#" class="mast-name">Nate</a>
-  <div class="mast-r"><span class="dot"></span>Venture Studio · London · San Francisco · Nairobi · South Africa</div>
+<header class="mast" id="mast">
+  <a href="#" class="mast-logo"><span class="mast-mark">Nate</span><span class="mast-sub">Venture Studio</span></a>
+  <div class="mast-r"><span class="dot"></span>London · Nairobi · Delaware</div>
 </header>
 <div class="fund-tag">
   <span class="fund-pill">Fund I — Now Raising</span>
@@ -156,23 +162,23 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div>
     <div class="hero-kicker">Nate — a public sector enablement studio</div>
     <h1>Public service products<br><em>built to be investable</em></h1>
-    <p class="hero-deck">Trillions of dollars flow into public services each year. The products managing them — hiring, training, supervision, decision-making — are almost universally grant-dependent, non-scalable, and invisible to private capital. Nate builds the infrastructure to change that.</p>
+    <p class="hero-deck">Trillions of dollars flow into public services each year. The products managing them are almost universally grant-dependent, non-scalable, and invisible to private capital. Nate builds the infrastructure to change that.</p>
   </div>
   <div class="snaps">
     <div class="snap" style="border-top:none"><div class="snap-l">The Thesis</div><div class="snap-v">Public sector problems are <strong>not inherently unbankable.</strong> They fail commercially because no one has built them with the right architecture — country-first in design, multi-country in scale, convertible from grant to investment.</div></div>
     <div class="snap"><div class="snap-l">The Model</div><div class="snap-v">Each Nate fund launches around a <strong>public sector theme.</strong> Each company in the fund solves a specific problem within that theme. Philanthropic capital de-risks early validation. Private capital enters when unit economics are proven.</div></div>
-    <div class="snap" style="border-bottom:none"><div class="snap-l">Fund I Status</div><div class="snap-v"><strong>Frontline Enablement.</strong> AgentBI is in beta with a $15M Gates Foundation grant, integrated with Apollo Agriculture. HealthBI is in pre-build validation. Raising $3M first close.</div></div>
+    <div class="snap" style="border-bottom:none"><div class="snap-l">Fund I Status</div><div class="snap-v"><strong>Frontline Enablement.</strong> AgentBI is rebuilding the infrastructure behind agricultural seed distribution — equipping and incentivising the field agents who get quality seed to farmers. Backed by a $15M Gates Foundation grant.</div></div>
   </div>
 </section>
 <div class="insight">
   <div class="insight-main">
     <span class="flag a">The founding insight</span>
     <h2>A structure problem,<br><em>not a demand problem</em></h2>
-    <p>Every country that delivers public services depends on a ground-level workforce to reach its population. Hundreds of billions flow into these systems every year. The demand is not in question.</p>
-    <p>The problem is structural. These products are built for grant cycles, not for scale. They are built by governments for one country, by donors for one programme, by NGOs for one context. <mark>They are built to be funded, not to be investable.</mark></p>
+    <p>Every country needs public infrastructure and services to reach its population. Hundreds of billions flow into these systems every year.</p>
+    <p>These products are built for grant cycles, not for scale. They are built by governments for one country, by donors for one programme, by NGOs for one context. <mark>They are built to be funded, not to be investable.</mark></p>
     <blockquote><p>"The market failure in public sector products is not that there is no market. It is that no one has built the products in a way that a private investor can enter."</p></blockquote>
     <p>Private conglomerates are already moving in — Veritas Capital, EQT, TA Associates, and PSG are deploying billions into govtech. NEOGOV was acquired for $3B+ in 2025. The public sector is being commercialised. The question is whether products built for emerging markets and frontline workforces get built to participate in that transition — or get left behind.</p>
-    <p>Nate's answer: build every product from day one with dual architecture — grant-fundable today, investor-ready tomorrow. <mark>That design is the product.</mark></p>
+    <p>We build every product from day one with dual architecture — <mark>grant-fundable today, investor-ready tomorrow.</mark></p>
   </div>
   <div class="punchy">
     <div class="p-inner">
@@ -291,5 +297,14 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <span>Public sector products built to be investable.</span>
   <a href="mailto:hello@nate.studio">hello@nate.studio</a>
 </footer>
+<script>
+(function(){
+  var mast=document.getElementById('mast');
+  if(!mast)return;
+  function onScroll(){ if(window.scrollY>36){mast.classList.add('scrolled');}else{mast.classList.remove('scrolled');} }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
