@@ -16,7 +16,8 @@ body{background:var(--white);color:var(--ink);font-family:var(--sans);font-size:
 .mast-logo{display:flex;align-items:baseline;gap:.6rem;text-decoration:none;line-height:1}
 .mast-mark{font-family:var(--serif);font-size:1.75rem;font-weight:400;letter-spacing:-.005em;color:var(--ink);transition:font-size .35s cubic-bezier(.4,0,.2,1)}
 .mast.scrolled .mast-mark{font-size:1.1rem}
-.mast-sub{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);white-space:nowrap;overflow:hidden;max-width:16rem;opacity:1;transition:opacity .3s ease,max-width .35s cubic-bezier(.4,0,.2,1),margin .35s ease}
+.mast-sub{font-family:var(--serif);font-size:1.6rem;font-weight:400;letter-spacing:-.005em;text-transform:none;color:var(--mid);white-space:nowrap;overflow:hidden;max-width:16rem;opacity:1;transition:opacity .3s ease,max-width .35s cubic-bezier(.4,0,.2,1),margin .35s ease,font-size .35s cubic-bezier(.4,0,.2,1)}
+.mast.scrolled .mast-sub{font-size:1.1rem}
 .mast.scrolled .mast-sub{opacity:0;max-width:0;margin-left:-.6rem}
 .mast-r{font-size:.62rem;font-weight:300;letter-spacing:.08em;color:var(--dim);display:flex;align-items:center;gap:8px;transition:opacity .3s ease}
 .mast.scrolled .mast-r{opacity:.55}
@@ -138,12 +139,17 @@ footer a{font-size:.75rem;font-weight:300;color:var(--mid);text-decoration:none;
 footer a:hover{color:var(--accent);border-color:var(--accent)}
 
 .team{padding:5vw var(--p);border-bottom:1px solid var(--rule)}
-.team-grid{display:grid;grid-template-columns:repeat(2,1fr);margin-top:2.5rem}
-@media(max-width:680px){.team-grid{grid-template-columns:1fr}}
-.team-cell{padding:1.9rem 3rem 1.9rem 0;border-right:1px solid var(--rule);border-top:1px solid var(--rule)}
-.team-cell:nth-child(2){padding-left:3rem;border-right:none;padding-right:0}
-.team-cell:nth-child(-n+2){border-top:none}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem}
+@media(max-width:860px){.team-grid{grid-template-columns:1fr}}
+.team-cell{padding:1.9rem 2.5rem 1.9rem 0;border-right:1px solid var(--rule);border-top:1px solid var(--rule)}
+.team-cell:nth-child(-n+3){border-top:none}
+.team-cell:nth-child(3n+2),.team-cell:nth-child(3n+3){padding-left:2.5rem}
+.team-cell:nth-child(3n){border-right:none;padding-right:0}
 .team-cell:nth-child(1){padding-left:0}
+.partner-group{margin-top:1.1rem}
+.partner-h{font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:.55rem}
+.partner-item{font-size:.78rem;font-weight:300;color:var(--mid);line-height:1.55;margin-bottom:.45rem}
+.partner-item strong{font-weight:500;color:var(--ink)}
 .team-role{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.55rem;display:block}
 .team-name{font-size:.92rem;font-weight:500;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
 .team-bio{font-size:.78rem;font-weight:300;color:var(--dim);line-height:1.75}
@@ -191,9 +197,9 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 <div class="concepts">
   <span class="flag">The Nate model — how we build differently</span>
   <div class="c-grid">
-    <div class="c-cell"><div class="c-name">Thematic funds, not a portfolio scatter</div><div class="c-desc">Each fund launches around a single public sector theme. Many ideas are generated under the theme; the promising ones are proto-tested into companies with co-founders. Viable proto-companies are seeded and spun out with pre-seed and seed investment and a founding team to take them forward. Nate Ventures is a co-founder, so portfolio companies share infrastructure, data, investor, and market relationships. The fund compounds; the companies don't start from zero.</div></div>
-    <div class="c-cell"><div class="c-name">Dual architecture: grant-ready and investor-ready</div><div class="c-desc">Every company is designed with two funders in mind from day one — the philanthropic capital that de-risks early validation, and the private capital that enters when unit economics are proven. Multi-country architecture, fee-generating from first deployment, exit-legible from the first contract.</div></div>
-    <div class="c-cell"><div class="c-name">The conversion is the moat</div><div class="c-desc">A consulting firm can't convert a grant-funded programme into an investable company — it has no equity stake. A pure VC fund can't de-risk the early validation — it has no grant access. Nate sits at the intersection of both. <mark>Converting grant businesses to investable ones is the product, not a by-product.</mark></div></div>
+    <div class="c-cell"><div class="c-name">Thematic funds, not a portfolio scatter</div><div class="c-desc">Each fund launches around a single public sector theme. Many ideas are generated under it; the promising ones are proto-tested into companies with co-founders. Viable ones are seeded and spun out with pre-seed and seed capital and a founding team. Nate Ventures stays a co-founder, so companies share infrastructure, data, investors, and markets — and don't start from zero.</div></div>
+    <div class="c-cell"><div class="c-name">Dual architecture: grant-ready and investor-ready</div><div class="c-desc">Every company is designed with two funders in mind from day one — philanthropic capital that de-risks early validation, and private capital that enters once unit economics are proven. Built multi-country from the start, fee-generating from first deployment, and exit-legible from the first contract — grant-ready today, investor-ready tomorrow.</div></div>
+    <div class="c-cell"><div class="c-name">The conversion is the moat</div><div class="c-desc">A consulting firm can't convert a grant-funded programme into an investable company — it has no equity stake. A pure VC fund can't de-risk the early validation — it has no grant access. Nate sits at the intersection of both. <mark>Converting grant businesses into investable ones is the product, not a by-product.</mark></div></div>
   </div>
 </div>
 <div class="fund-section">
@@ -239,7 +245,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <span class="flag">The fund pipeline — future themes</span>
   <h2>One studio,<br><em>many public sector problems</em></h2>
   <div class="t-grid">
-    <div class="t-cell"><span class="t-wave active">Fund I · Active</span><div class="t-name">Frontline Enablement</div><div class="t-desc">Training, hiring, supervision, and performance infrastructure for public sector workforces. AgentBI and HealthBI. The foundational layer every other public sector product runs on top of.</div></div>
+    <div class="t-cell"><span class="t-wave active">Fund I · Active</span><div class="t-name">Frontline Enablement</div><div class="t-desc">Training, hiring, supervision, and performance infrastructure for public sector workforces. AgentBI in agriculture, with healthcare frontline enablement next in the theme. The foundational layer every other public sector product runs on top of.</div></div>
     <div class="t-cell"><span class="t-wave">Fund II · Pipeline</span><div class="t-name">Climate Resilience</div><div class="t-desc">Decision infrastructure for climate-vulnerable governments and communities — flood risk, urban heat, agricultural adaptation, carbon credit verification. The data layer that makes climate policy actionable at the local level.</div></div>
     <div class="t-cell"><span class="t-wave">Fund III · Pipeline</span><div class="t-name">Financial Inclusion Infrastructure</div><div class="t-desc">Market systems and payment infrastructure for excluded populations — women-led enterprises, rural traders, informal market actors. The bridge between development finance and private capital markets.</div></div>
   </div>
@@ -266,6 +272,21 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <span class="team-role">Co-founder</span>
       <div class="team-name">Nishita Gill</div>
       <div class="team-bio">Founder of Treemouse, who has built products from the ground up across government, global health, and fintech. She built and now leads digital product for HIV, TB, and Hepatitis at the Clinton Health Access Initiative, was founding Head of Design at Fi.Money — India’s first major neobank — and redesigned India’s national identity infrastructure (Aadhaar) with the Government of India, a product now accessible to 1.35 billion people.</div>
+    </div>
+    <div class="team-cell">
+      <span class="team-role">Partners &amp; Advisors</span>
+      <div class="partner-group" style="margin-top:0">
+        <div class="partner-h">Research Partners</div>
+        <div class="partner-item"><strong>Busara</strong> — Behavioural science</div>
+        <div class="partner-item"><strong>Treemouse</strong> — Design strategy for India</div>
+        <div class="partner-item"><strong>Irrational Labs</strong> — Behavioural-science-backed strategy</div>
+        <div class="partner-item"><strong>CGIAR</strong> — Agricultural research</div>
+      </div>
+      <div class="partner-group">
+        <div class="partner-h">Advisors</div>
+        <div class="partner-item"><strong>Michael Campbell</strong> — Head of Mass General Pharmaceutical Programs</div>
+        <div class="partner-item"><strong>Chaning Jang</strong> — CSO, Irrational Labs</div>
+      </div>
     </div>
   </div>
 </div>
