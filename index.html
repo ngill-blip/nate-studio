@@ -87,7 +87,8 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .fund-theme strong{display:block;font-weight:500;color:var(--ink)}
 .co-grid{display:grid;grid-template-columns:repeat(2,1fr);margin-top:0}
 @media(max-width:680px){.co-grid{grid-template-columns:1fr}}
-.co-cell{padding:2rem 3rem 2rem 0;border-right:1px solid var(--rule);border-top:1px solid var(--rule)}
+.co-cell{padding:2rem 3rem 2rem 0;border-right:1px solid var(--rule);border-top:1px solid var(--rule);display:flex;flex-direction:column}
+.co-cell .co-desc{flex:1}
 .co-cell:nth-child(2){padding-left:3rem;border-right:none;padding-right:0}
 .co-cell:nth-child(-n+2){border-top:none}
 .co-tag{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;display:block}
@@ -98,8 +99,8 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .co-k{font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.15rem}
 .co-v{font-size:.78rem;font-weight:400;color:var(--ink)}
 .co-demo,.co-cta{display:inline-block;font-weight:500;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:opacity .2s ease}
-.co-demo{margin-top:.5rem;font-size:.72rem;letter-spacing:.02em}
-.co-cta{margin-top:1.1rem;font-size:.8rem;line-height:1.5}
+.co-demo{margin-top:1.1rem;font-size:.8rem;letter-spacing:.02em;align-self:flex-start}
+.co-cta{margin-top:1.1rem;font-size:.8rem;line-height:1.5;align-self:flex-start}
 .co-demo:hover,.co-cta:hover{opacity:.6}
 .model{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.model{grid-template-columns:1fr}}
@@ -142,7 +143,11 @@ blockquote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-h
 .moat-item{font-size:.82rem;font-weight:300;color:var(--mid);padding:.75rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:.75rem}
 .moat-item:first-child{border-top:1px solid var(--rule)}
 .moat-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
-footer{padding:2rem var(--p);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer{padding:2rem var(--p);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+footer .foot-name{justify-self:start}
+footer>span:nth-child(2){text-align:center}
+footer>a{justify-self:end}
+@media(max-width:780px){footer{grid-template-columns:1fr;gap:.5rem}footer>span:nth-child(2){text-align:left}footer>a{justify-self:start}}
 .foot-name{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 footer span{font-size:.65rem;font-weight:300;color:var(--dim);letter-spacing:.06em}
 footer a{font-size:.75rem;font-weight:300;color:var(--mid);text-decoration:none;border-bottom:1px solid var(--rule)}
@@ -200,7 +205,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div>
     <div class="hero-kicker">Nate — a public sector venture studio</div>
     <h1>Public service products<br><em>built to be investable</em></h1>
-    <p class="hero-deck">Nate turns grant-funded public sector delivery problems into investable software and service companies. Trillions flow into public services each year through products that are grant-dependent and invisible to private capital — we build them to stand on their own. The first, AgentBI, is already live in the field.</p>
+    <p class="hero-deck">We turn grant-funded public sector delivery problems into investable software and service companies. Trillions flow into public services each year through products that are grant-dependent and invisible to private capital — we build them to stand on their own. The first, AgentBI, is already live in the field.</p>
   </div>
   <div class="snaps">
     <div class="snap" style="border-top:none"><div class="snap-l">The Thesis</div><div class="snap-v">Public sector problems are <strong>not inherently unbankable.</strong> They fail commercially because no one has built them with the right architecture — country-first in design, multi-country in scale, convertible from grant to investment.</div></div>
@@ -219,8 +224,8 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <span class="co-tag">Company 01 · Live in the field</span>
       <div class="co-name">AgentBI</div>
       <div class="co-desc">The business intelligence layer for public sector field workforces. Surfaces task completion, supervision patterns, incentive uptake, and retention signals as actionable insight for programme managers, governments, and funders. <mark>Adam Grunewald is the founder selected to lead it.</mark> AgentBI is emerging from Gates Foundation–funded CGIAR seed systems work in Kenya — that philanthropic funding sits with the programme it grew out of, not with Nate or its funds.</div>
-      <a class="co-demo" href="https://ngill-blip.github.io/agentbi-demo/" target="_blank" rel="noopener">View the demo →</a>
       <div class="co-meta"><div><span class="co-k">Status</span><span class="co-v">Live in the field</span></div><div><span class="co-k">Origin</span><span class="co-v">Gates-funded CGIAR fieldwork</span></div><div><span class="co-k">Geography</span><span class="co-v">Kenya → Multi-country</span></div></div>
+      <a class="co-demo" href="https://ngill-blip.github.io/agentbi-demo/" target="_blank" rel="noopener">View the demo →</a>
     </div>
     <div class="co-cell">
       <span class="co-tag"><span class="dot" style="display:inline-block;vertical-align:middle;margin-right:7px"></span>Sourcing Ideas</span>
@@ -253,7 +258,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div class="c-grid">
     <div class="c-cell"><div class="c-name">Thematic funds, not a portfolio scatter</div><div class="c-desc">Each fund launches around a single public sector theme. Many ideas are generated under it; the promising ones are proto-tested into companies with co-founders. Viable ones are seeded and spun out with pre-seed and seed capital and a founding team. The studio stays a co-founder, so companies share infrastructure, data, investors, and markets — and don't start from zero.</div></div>
     <div class="c-cell"><div class="c-name">Dual architecture: grant-ready and investor-ready</div><div class="c-desc">Every company is designed with two funders in mind from day one — philanthropic capital that de-risks early validation, and private capital that enters once unit economics are proven. Built multi-country from the start, fee-generating from first deployment, and exit-legible from the first contract — grant-ready today, investor-ready tomorrow.</div></div>
-    <div class="c-cell"><div class="c-name">The conversion is the moat</div><div class="c-desc">A consulting firm can't convert a grant-funded programme into an investable company — it has no equity stake. A pure VC fund can't de-risk the early validation — it has no grant access. Nate sits at the intersection of both. <mark>Converting grant businesses into investable ones is the product, not a by-product.</mark></div></div>
+    <div class="c-cell"><div class="c-name">The conversion is the moat</div><div class="c-desc">A consulting firm can't convert a grant-funded programme into an investable company — it has no equity stake. A pure VC fund can't de-risk the early validation — it has no grant access. The studio sits at the intersection of both. <mark>Converting grant businesses into investable ones is the product, not a by-product.</mark></div></div>
   </div>
 </div>
 <div class="model">
@@ -264,14 +269,14 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
     <h3>Why the current model fails</h3>
     <p>GovTech in developed markets has cracked the procurement model. But frontier markets remain grant-dependent by default. Procurement is fragmented, standards are non-existent, and products are built bespoke for each context. <mark>No one captures the value of having done it before.</mark></p>
     <h3>Why Nate's model is different</h3>
-    <p>Nate's capital structure matches the actual risk profile of each stage. Philanthropic capital covers ideation and early validation. Nate studio capital builds the product and finds PMF. Strategic corporates and growth PE enter when unit economics are proven. <mark>Each fund has a clear path from grant to investable — built into the product from day one.</mark></p>
+    <p>The studio's capital structure matches the actual risk profile of each stage. Philanthropic capital covers ideation and early validation. Studio capital builds the product and finds PMF. Strategic corporates and growth PE enter when unit economics are proven. <mark>Each fund has a clear path from grant to investable — built into the product from day one.</mark></p>
   </div>
   <div class="capital-stack">
     <span class="cs-head">Capital stack by stage</span>
     <div class="cs-row"><div class="cs-stage">Stage 1 · Validation</div><div class="cs-who">Philanthropic &amp; programme capital</div><div class="cs-what">Foundations, research networks, and multilateral development funders de-risk ideation and early field validation. They back the programmes, not the investment vehicle — impact expectation, not return expectation.</div></div>
     <div class="cs-row"><div class="cs-stage">Stage 2 · Product-Market Fit</div><div class="cs-who">Nate studio capital + grants</div><div class="cs-what">Nate's fund capital builds alongside the grant relationships. Managed service fees generate revenue from first deployment.</div></div>
     <div class="cs-row"><div class="cs-stage">Stage 3 · Commercial Scale</div><div class="cs-who">Recurring revenue + strategic entry</div><div class="cs-what">Liquidity is built on repeatable revenue, not a speculative exit: the same product, sold on fees, to the many countries that need it. Strategic corporates and growth investors enter on top of proven demand.</div></div>
-    <div class="cs-row"><div class="cs-stage">Fund I · Frontline Enablement</div><div class="cs-who">First close underway</div><div class="cs-what">Full fund materials available on request — <a href="mailto:hello@petersonandgill.com?subject=Fund%20I%20materials" style="color:var(--accent)">hello@petersonandgill.com</a></div></div>
+    <div class="cs-row"><div class="cs-stage">Fund I · Frontline Enablement</div><div class="cs-who">In formation</div><div class="cs-what">AgentBI is being built under Gates-funded CGIAR fieldwork; the fund vehicle is being structured alongside it. Enquiries — <a href="mailto:hello@petersonandgill.com?subject=Fund%20I%20enquiry" style="color:var(--accent)">hello@petersonandgill.com</a></div></div>
   </div>
 </div>
 <div class="themes">
@@ -288,7 +293,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <h2>From grant-funded<br><em>to investor-ready</em></h2>
   <div class="arc-grid">
     <div class="arc-cell"><span class="arc-when">Phase 1 · Grant Entry</span><div class="arc-n">1</div><div class="arc-title">Enter with philanthropic capital, validate with field reality</div><div class="arc-body">Enter the problem space through existing programme relationships — foundations, research networks, multilaterals — with zero commercial risk. Build field evidence. Run real deployments. Most attempts die here because the product was built for the report, not for the user.</div></div>
-    <div class="arc-cell"><span class="arc-when">Phase 2 · Product Architecture</span><div class="arc-n">2</div><div class="arc-title">Build with dual architecture — not a pivot, a design choice</div><div class="arc-body">Every product Nate builds is architected for two futures simultaneously: continued grant funding for the programme logic, and private investment for the product logic. Multi-country by design, fee-generating from first deployment, exit-legible from the first contract.</div></div>
+    <div class="arc-cell"><span class="arc-when">Phase 2 · Product Architecture</span><div class="arc-n">2</div><div class="arc-title">Build with dual architecture — not a pivot, a design choice</div><div class="arc-body">Every product the studio builds is architected for two futures simultaneously: continued grant funding for the programme logic, and private investment for the product logic. Multi-country by design, fee-generating from first deployment, exit-legible from the first contract.</div></div>
     <div class="arc-cell"><span class="arc-when">Phase 3 · Commercial Scale</span><div class="arc-n">3</div><div class="arc-title">Recurring revenue and multi-country demand create liquidity</div><div class="arc-body">Liquidity comes from the commercial paths, not from a speculative exit. Once a company shows repeatable fee revenue and the same product deploying across many countries, private capital has a legible entry point — strategics as investors, acquirers, or distribution partners; growth capital for scale.</div></div>
   </div>
 </div>
@@ -337,7 +342,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 <div style="padding:5vw var(--p);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:center">
   <p style="font-family:var(--serif);font-size:clamp(1.4rem,2.8vw,2.2rem);font-style:italic;font-weight:400;color:var(--ink);line-height:1.35;max-width:60ch;margin:0 auto">Public sector products were built to survive on grants.<br>We're building them to stand on their own.</p>
   <div style="margin-top:2rem;display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap">
-    <a class="co-cta" style="margin-top:0" href="mailto:hello@petersonandgill.com?subject=Fund%20I%20materials">Request the Fund I materials →</a>
+    <a class="co-cta" style="margin-top:0" href="mailto:hello@petersonandgill.com?subject=Fund%20I%20enquiry">Enquire about Fund I →</a>
     <a class="co-cta" style="margin-top:0" href="mailto:hello@petersonandgill.com?subject=Building%20with%20Nate">Build a company with us →</a>
   </div>
 </div>
@@ -350,11 +355,11 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 (function(){
   var mast=document.getElementById('mast');
   if(!mast)return;
-  function onScroll(){ if(window.scrollY>36){mast.classList.add('scrolled');}else{mast.classList.remove('scrolled');} }
+  function onScroll(){ var y=window.scrollY; if(y>72){mast.classList.add('scrolled');}else if(y<24){mast.classList.remove('scrolled');} }
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
 })();
 </script>
 </body>
-<!-- rev7 -->
+<!-- rev8 -->
 </html>
