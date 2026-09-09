@@ -221,7 +221,8 @@ svg.icon.small{width:15px;height:15px;}
 /* ---------- partners ---------- */
 .partners{padding:40px 20px;display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;}
 .partners-rows{width:100%;max-width:670px;flex:1 1 420px;min-width:0;}
-.partner-row{border-top:1px solid var(--rule);padding:7.5px 0;display:flex;justify-content:space-between;align-items:baseline;}
+.partner-row{border-top:1px solid var(--rule);padding:7.5px 0;display:flex;justify-content:space-between;align-items:baseline;text-decoration:none;color:inherit;}
+.partner-row:focus-visible{outline:2px solid var(--dot);outline-offset:2px;}
 .partner-row .pname{font-family:Literata;font-style:italic;font-weight:500;font-size:18px;line-height:24px;color:var(--ink);}
 .partner-row .arrow{font-size:15px;color:var(--ink);}
 
@@ -713,14 +714,14 @@ svg.icon.small{width:15px;height:15px;}
   <div class="partners">
     <div class="l1">DESIGN &amp; BRANDING PARTNERS</div>
     <div class="partners-rows">
-      <div class="partner-row">
+      <a class="partner-row" href="https://treemouse.com" target="_blank" rel="noopener">
         <div><span class="pname">Treemouse</span><span class="partner-desc">&mdash;Formative Research and Ideation Partners</span></div>
         <div class="arrow"><svg class="icon small" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></div>
-      </div>
-      <div class="partner-row">
+      </a>
+      <a class="partner-row" href="https://hami.studio" target="_blank" rel="noopener">
         <div><span class="pname">Hami</span><span class="partner-desc">&mdash;Branding, Design and Storytelling Partners</span></div>
         <div class="arrow"><svg class="icon small" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></div>
-      </div>
+      </a>
     </div>
   </div>
 
