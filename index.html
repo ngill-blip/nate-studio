@@ -40,7 +40,7 @@ body{
   font-family:Geist;
   font-weight:400;
   color:var(--ink);
-  background:var(--page);
+  background:linear-gradient(to bottom,#a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,#edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px, var(--page);
 }
 
 /* ---------- shared text styles ---------- */
@@ -93,7 +93,7 @@ svg.icon.small{width:15px;height:15px;}
 .rule-inset{border-top:1px solid var(--rule);margin:0 20px;}
 
 /* ---------- frame ---------- */
-.frame{position:relative;margin:20px auto;max-width:1400px;width:calc(100% - 40px);border:1px solid var(--rule);box-sizing:border-box;background:linear-gradient(to bottom,#a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,#edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px, var(--page);}
+.frame{position:relative;margin:20px auto;max-width:1400px;width:calc(100% - 40px);border:1px solid var(--rule);box-sizing:border-box;background:transparent;}
 
 /* ---------- header ---------- */
 .header-row{display:flex;align-items:stretch;}
@@ -118,7 +118,7 @@ svg.icon.small{width:15px;height:15px;}
 .card .l2{margin-bottom:18px;}
 
 /* ---------- manifesto ---------- */
-.manifesto{min-height:320px;display:flex;align-items:center;justify-content:center;}
+.manifesto{min-height:320px;display:flex;align-items:center;justify-content:center;padding:0 20px;}
 .manifesto .manifesto-text{max-width:1160px;text-align:center;}
 
 /* ---------- agentbi ---------- */
@@ -131,7 +131,7 @@ svg.icon.small{width:15px;height:15px;}
 .agentbi-strip .cell{flex:1;padding:20px;}
 .agentbi-strip .cell + .cell{border-left:1px solid var(--rule);}
 .agentbi-strip .cell .l2{margin-bottom:8px;}
-.agentbi-right{width:100%;max-width:670px;height:560px;background:var(--pale);position:relative;display:flex;align-items:center;justify-content:center;}
+.agentbi-right{width:auto;max-width:none;height:640px;margin:-40px -20px -40px 0;background:var(--pale);position:relative;display:flex;align-items:center;justify-content:center;}
 .phone{width:243px;height:480px;border:7.5px solid var(--phone);border-radius:40px;background:#ffffff;position:relative;}
 .phone .notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:60px;height:6px;border-radius:3px;background:var(--phone);}
 
@@ -297,14 +297,14 @@ svg.icon.small{width:15px;height:15px;}
 @media (max-width:1024px){
   .agentbi{grid-template-columns:minmax(0,1fr);row-gap:32px;}
   .agentbi-left{order:1;}
-  .agentbi-right{order:2;height:auto;min-height:420px;}
+  .agentbi-right{order:2;height:auto;min-height:420px;margin:0 -20px;}
   .model{grid-template-columns:minmax(0,1fr);row-gap:32px;}
   .model-left{order:1;height:auto;min-height:320px;}
   .model-right{order:2;}
   .hero{flex-direction:column;align-items:stretch;padding:120px 20px 60px;}
   .hero-right{margin-top:32px;}
   .team-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:32px;column-gap:32px;}
-  .team-col.bordered:nth-child(2){border-right:none;}
+  .team-col.bordered:nth-child(2){border-right:none;padding-right:0;}
   .howfits-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:32px;column-gap:32px;}
   .howfits-arrow{display:none;}
   .howfits-spacer{display:none;}
@@ -314,6 +314,8 @@ svg.icon.small{width:15px;height:15px;}
   .footer-wordmark{font-size:84px;line-height:84px;}
 }
 @media (max-width:700px){
+  .agentbi-right,.model-left{margin-left:-20px;margin-right:-20px;width:auto;max-width:none;}
+
   .frame{margin:12px auto;width:calc(100% - 24px);}
   .agentbi,.model,.funds-cols,.team-cols,.howfits-grid,.footer{grid-template-columns:minmax(0,1fr);}
   .agentbi{row-gap:28px;}
@@ -342,7 +344,7 @@ svg.icon.small{width:15px;height:15px;}
   .funds-col.c1{border-right:none;padding-right:0;}
   .funds-col.c2{padding-left:0;border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;}
 
-  .team-col.bordered{border-right:none;}
+  .team-col.bordered{border-right:none;padding-right:0;}
   .team-col:not(:first-child){border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;}
 
   .howfits-grid{row-gap:0;}
