@@ -40,11 +40,7 @@ body{
   font-family:Geist;
   font-weight:400;
   color:var(--ink);
-  background:
-    linear-gradient(to bottom,
-      #a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,
-      #edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px,
-    var(--page);
+  background:var(--page);
 }
 
 /* ---------- shared text styles ---------- */
@@ -64,7 +60,7 @@ body{
 
 .wordmark{font-family:Literata;font-style:italic;font-weight:500;font-size:33px;line-height:33px;color:var(--ink);}
 .footer-wordmark{font-family:Literata;font-style:italic;font-weight:300;font-size:128px;line-height:128px;color:var(--onDark);}
-.h1{font-family:Literata;font-style:italic;font-weight:500;font-size:52px;line-height:52px;color:var(--ink);margin:0;}
+.h1{font-family:Literata;font-style:italic;font-weight:500;font-size:48px;line-height:52px;color:var(--ink);margin:0;}
 .h2{font-family:Literata;font-style:italic;font-weight:500;font-size:56px;line-height:56px;color:var(--ink);margin:0;}
 .manifesto-text{font-family:Literata;font-style:italic;font-weight:400;font-size:32px;line-height:32px;color:var(--ink);margin:0;}
 .footer-statement{font-family:Literata;font-style:italic;font-weight:400;font-size:32px;line-height:32px;color:var(--onDark);margin:0;}
@@ -73,7 +69,9 @@ body{
 .partner-desc{font-family:Literata;font-style:italic;font-weight:400;font-size:18px;line-height:24px;color:var(--mute);}
 .pill-label{font-family:Literata;font-style:italic;font-weight:500;font-size:14px;line-height:14px;color:var(--ink);}
 .linkedin-label{font-family:Literata;font-style:italic;font-weight:500;font-size:12px;line-height:12px;color:var(--ink);}
-.hero-body{font-family:Literata;font-style:normal;font-weight:400;font-size:22px;line-height:24px;color:var(--ink);margin:0;}
+.hero-body{font-family:Literata;font-style:normal;font-weight:400;font-size:20px;line-height:24px;color:var(--ink);margin:0;}
+.br-wide{display:none;}
+@media (min-width:1025px){.br-wide{display:inline;}}
 .stat-figure{font-family:Literata;font-style:normal;font-weight:500;font-size:52px;line-height:52px;color:var(--ink2);margin:0;}
 .stat-label{font-family:Literata;font-style:normal;font-weight:400;font-size:22px;line-height:24px;color:var(--mute);margin:0;}
 
@@ -95,7 +93,7 @@ svg.icon.small{width:15px;height:15px;}
 .rule-inset{border-top:1px solid var(--rule);margin:0 20px;}
 
 /* ---------- frame ---------- */
-.frame{position:relative;margin:0 auto;max-width:1440px;width:100%;border:1px solid var(--rule);box-sizing:border-box;}
+.frame{position:relative;margin:20px auto;max-width:1400px;width:auto;border:1px solid var(--rule);box-sizing:border-box;background:linear-gradient(to bottom,#a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,#edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px, var(--page);}
 
 /* ---------- header ---------- */
 .header-row{display:flex;align-items:stretch;}
@@ -112,9 +110,9 @@ svg.icon.small{width:15px;height:15px;}
 /* ---------- hero ---------- */
 .hero{padding:224px 20px 60px;min-height:540px;display:flex;align-items:flex-end;justify-content:space-between;}
 .hero-left{max-width:700px;}
-.hero-left .l1{margin-bottom:22px;}
-.hero-left .h1{margin-bottom:20px;}
-.hero-left .hero-body{max-width:660px;}
+.hero-left .l1{margin-bottom:13px;}
+.hero-left .h1{margin-bottom:46px;}
+.hero-left .hero-body{max-width:700px;}
 .hero-right{width:100%;max-width:432px;display:flex;align-items:stretch;min-width:0;}
 .card{width:100%;max-width:432px;border:1px solid var(--rule);border-radius:6px;padding:24px 22px;background:transparent;display:flex;flex-direction:column;flex:1 1 0;min-width:0;box-sizing:border-box;}
 .card .l2{margin-bottom:18px;}
@@ -315,6 +313,7 @@ svg.icon.small{width:15px;height:15px;}
   .footer-wordmark{font-size:84px;line-height:84px;}
 }
 @media (max-width:700px){
+  .frame{margin:10px auto;}
   .agentbi,.model,.funds-cols,.team-cols,.howfits-grid,.footer{grid-template-columns:minmax(0,1fr);}
   .agentbi{row-gap:28px;}
   .model{row-gap:28px;}
@@ -400,7 +399,7 @@ svg.icon.small{width:15px;height:15px;}
     <div class="hero-left">
       <div class="l1">A VENTURE STUDIO IN THE PUBLIC SECTOR</div>
       <h1 class="h1">Public service products<br>built to be investable</h1>
-      <p class="hero-body">We invent, build, and co-found companies. We turn grant-funded public sector problems into investable software and service companies. Grants hedge the risk; investment powers the expansion.</p>
+      <p class="hero-body">We invent, build, and co-found companies. We turn grant-funded public sector problems into investable software and service companies.<br class="br-wide"> Grants hedge the risk; investment powers the expansion.</p>
     </div>
     <div class="hero-right">
       <div class="hero-carousel" role="group" aria-label="Hero cards">
