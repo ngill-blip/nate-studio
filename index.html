@@ -93,7 +93,7 @@ svg.icon.small{width:15px;height:15px;}
 .rule-inset{border-top:1px solid var(--rule);margin:0 20px;}
 
 /* ---------- frame ---------- */
-.frame{position:relative;margin:20px auto;max-width:1400px;width:auto;border:1px solid var(--rule);box-sizing:border-box;background:linear-gradient(to bottom,#a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,#edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px, var(--page);}
+.frame{position:relative;margin:20px auto;max-width:1400px;width:calc(100% - 40px);border:1px solid var(--rule);box-sizing:border-box;background:linear-gradient(to bottom,#a3bef5 0px, #bbcff7 100px, #cfdefa 200px, #e0e9fb 300px,#edf2fd 400px, #f5f8fe 500px, #fafcff 640px) no-repeat top / 100% 672px, var(--page);}
 
 /* ---------- header ---------- */
 .header-row{display:flex;align-items:stretch;}
@@ -140,8 +140,8 @@ svg.icon.small{width:15px;height:15px;}
 .funds .l1{margin-bottom:26px;}
 .funds-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:512px;}
 .funds-col{display:flex;flex-direction:column;}
-.funds-col.c1{border-right:1px solid var(--rule);padding-right:20px;}
-.funds-col.c2{padding-left:40px;}
+.funds-col.c1{border-right:1px solid var(--rule);padding-right:44px;}
+.funds-col.c2{padding-left:44px;}
 .funds-col .h2{margin-bottom:22px;}
 .theme-block{border-left:2px solid var(--rule);padding-left:20px;}
 .theme-block .l2{margin-bottom:8px;}
@@ -210,8 +210,8 @@ svg.icon.small{width:15px;height:15px;}
 .team .l1{margin-bottom:15px;}
 .team .h2{margin-bottom:44px;}
 .team-cols{display:grid;grid-template-columns:minmax(0,440fr) minmax(0,440fr) minmax(0,400fr);column-gap:40px;}
-.team-col.bordered{border-right:1px solid var(--rule);}
-.team-head{display:flex;align-items:center;justify-content:space-between;padding-right:40px;}
+.team-col.bordered{border-right:1px solid var(--rule);padding-right:42px;}
+.team-head{display:flex;align-items:center;justify-content:space-between;}
 .team-head-left{display:flex;flex-direction:column;}
 .team-head-left .name-title{margin-top:5px;}
 .team-col .body13{margin-top:22.5px;}
@@ -313,19 +313,24 @@ svg.icon.small{width:15px;height:15px;}
   .footer-wordmark{font-size:84px;line-height:84px;}
 }
 @media (max-width:700px){
-  .frame{margin:10px auto;}
+  .frame{margin:12px auto;width:calc(100% - 24px);}
   .agentbi,.model,.funds-cols,.team-cols,.howfits-grid,.footer{grid-template-columns:minmax(0,1fr);}
   .agentbi{row-gap:28px;}
   .model{row-gap:28px;}
   .funds-cols{row-gap:0;}
 
-  .header-row{flex-wrap:wrap;height:auto;}
-  .header-row.row1,.header-row.row2{height:auto;}
-  .hr-main{flex:1 1 100%;flex-wrap:wrap;row-gap:8px;padding-top:16px;padding-bottom:16px;min-width:0;}
-  .hr-left{flex-wrap:wrap;row-gap:4px;min-width:0;}
-  .hr-left .tagline{margin-left:14px;}
-  .hr-meta{flex-wrap:wrap;min-width:0;}
-  .hr-right{width:100%;max-width:100%;flex:0 0 100%;border-left:none;border-top:1px solid var(--rule);height:auto;padding:14px 20px;}
+  .header-row{flex-wrap:nowrap;}
+  .header-row.row1{height:auto;min-height:56px;}
+  .hr-left .tagline{margin-left:14px;max-width:160px;}
+  @media (max-width:360px){.hr-left .tagline{display:none;}}
+  .header-row.row2{height:48px;}
+  .hr-main{flex:1 1 auto;flex-wrap:nowrap;min-width:0;padding-left:16px;padding-right:16px;}
+  .hr-left{flex-wrap:nowrap;align-items:center;min-width:0;}
+  .hr-left .tagline{margin-left:14px;max-width:160px;}
+  .hr-meta{display:none;}
+  .hr-right{width:auto;max-width:none;flex:0 0 118px;border-left:1px solid var(--rule);border-top:none;height:auto;padding:0;}
+  .wordmark{font-size:28px;line-height:28px;}
+  .hr-announcement{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   .hero{padding:60px 20px 40px;min-height:0;}
   .hero-left{max-width:100%;}
@@ -340,19 +345,26 @@ svg.icon.small{width:15px;height:15px;}
   .team-col:not(:first-child){border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;}
 
   .howfits-grid{row-gap:0;}
-  .howfits-arrow{display:none;}
+  .howfits-arrow{display:block;text-align:left;margin:20px 0;align-self:start;}
+  .howfits-arrow svg{transform:rotate(90deg);}
   .howfits-spacer{display:none;}
-  .howfits-col ~ .howfits-col{border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;}
+  .howfits-col ~ .howfits-col{border-top:none;padding-top:0;margin-top:0;}
+  .howfits-col .body13{max-width:100%;}
 
-  .footer{min-height:auto;}
-  .footer-col1{border-right:none;justify-content:flex-start;padding-bottom:28px;}
-  .footer-col2{border-top:1px solid var(--rule);padding-top:28px;}
-  .footer-row{flex-wrap:wrap;row-gap:16px;column-gap:16px;}
+  .footer{min-height:auto;display:flex;flex-direction:column;padding:0;}
+  .footer-col2{display:contents;}
+  .footer-statement{order:1;padding:30px 20px 0;max-width:100%;font-size:24px;line-height:30px;}
+  .footer-row{order:2;padding:22px 20px 30px;margin-top:0;flex-wrap:nowrap;column-gap:16px;align-items:center;}
+  .footer-cta{max-width:none;font-size:13px;line-height:17px;}
+  .footer-row .pill-outline{flex:0 0 160px;width:160px;}
+  .footer-col1{order:3;border-right:none;border-top:1px solid var(--rule);justify-content:flex-start;padding:30px 20px;}
+  .footer-rule{order:4;margin:0;}
+  .footer-copyright{order:5;padding:22px 20px 30px;margin-top:0;}
 
   .h1{font-size:32px;line-height:36px;}
   .h2{font-size:30px;line-height:34px;}
   .manifesto-text{font-size:20px;line-height:26px;}
-  .footer-wordmark{font-size:56px;line-height:56px;}
+  .footer-wordmark{font-size:80px;line-height:80px;}
 
   .dots{height:140px;}
   .manifesto{min-height:200px;}
@@ -425,7 +437,7 @@ svg.icon.small{width:15px;height:15px;}
 
   <!-- MANIFESTO -->
   <div class="manifesto">
-    <p class="manifesto-text">Public systems fail people, then blame them for the outcome. P&amp;G Ventures builds self-funding companies that fix the systems.</p>
+    <p class="manifesto-text">People are often blamed for choices made inside systems that deny them the information and support to succeed. P&amp;G Ventures builds companies that repair those systems &mdash; and leave them more trusted than before.</p>
   </div>
 
   <div class="rule-full"></div>
