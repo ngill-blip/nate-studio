@@ -489,6 +489,8 @@ svg.icon.small{width:15px;height:15px;}
 .hr-link{font-family:Geist;font-weight:400;font-size:12px;line-height:16px;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;margin-right:22px;}
 .hr-link:focus-visible{outline:2px solid var(--dot);outline-offset:2px;}
 a.wordmark{text-decoration:none;}
+.wordmark-link{color:inherit;text-decoration:none;}
+.wordmark-link:focus-visible,a.wordmark:focus-visible{outline:2px solid var(--dot);outline-offset:4px;}
 /* footer: room between the wordmark and the tagline */
 .footer-col1 .tagline{margin-top:18px;}
 .manifesto .manifesto-text{text-wrap:balance;}
@@ -500,6 +502,7 @@ a.wordmark{text-decoration:none;}
 /* AgentBI: facts strip sits 40px under the paragraph instead of pinned to the bottom of the column */
 #agentbi .agentbi-left{height:auto;}
 #agentbi .agentbi-strip{margin-top:40px;}
+@media (min-width:1025px){#agentbi .agentbi-left{min-height:560px;}#agentbi .agentbi-strip{margin-top:auto;}#agentbi .agentbi-body{margin-bottom:40px;}}
 /* ---- type scale (24 Sep review) ---- */
 /* 1. section headlines: Literata Medium Italic 52/52 on desktop */
 @media (min-width:1025px){.h2{font-size:52px;line-height:52px;}}
@@ -627,7 +630,6 @@ a.wordmark{text-decoration:none;}
         <span class="tagline meta12">A venture studio by Peterson &amp; Gill LLC</span>
       </div>
       <div class="hr-meta">
-        <a class="hr-link" href="./">Home</a>
         <span class="hr-dot"></span>
         <span class="meta12">London &middot; Nairobi</span>
       </div>
@@ -707,7 +709,7 @@ a.wordmark{text-decoration:none;}
   <!-- FOOTER -->
   <div class="footer">
     <div class="footer-col1">
-      <div class="footer-wordmark">Commonhold</div>
+      <div class="footer-wordmark"><a class="wordmark-link" href="./">Commonhold</a></div>
       <div class="tagline">A venture studio by Peterson &amp; Gill LLC</div>
     </div>
     <div class="footer-col2">
